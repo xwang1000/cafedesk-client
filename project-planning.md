@@ -44,3 +44,18 @@ result page
 store page
 user page
 admin page
+
+
+# Stack Choices
+
+## Front-End
+    React, Redux, HTML, CSS, Bootstrap, axios
+
+## Back-End
+    Axios, 
+    ORM: Sequalize, 
+    Javascript,
+    Routing: Express.js
+
+## Database
+    postgres, knex?
