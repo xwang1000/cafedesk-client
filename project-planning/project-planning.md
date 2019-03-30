@@ -61,5 +61,11 @@ admin page
 ## Database
     postgres, knex?
 
+## Testing
+    CircleCI, Jest
+
+## Deployment 
+    Heroku / Netlify
+
 # ERD
 ![Entity Relations](./erds.png "Entity Relations")
