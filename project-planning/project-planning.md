@@ -62,4 +62,4 @@ admin page
     postgres, knex?
 
 # ERD
-![Entity Relations](./erd.png "Entity Relations")
+![Entity Relations](./erds.png "Entity Relations")
