@@ -1,28 +1,37 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import axios from 'axios'
+import {getBusinesses} from './cafedeskAPI'
+import './App.css'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+function App() {
+  const [businesses, setBusinesses] = useState([])
+
+  const searchWithKeyword = (event) => {
+    event.preventDefault()
+    let keyword = event.target.keyword.value
+    lookupBusiness(keyword)
+    keyword = ''
   }
+
+  const lookupBusiness = (keyword) => {
+    getBusinesses(keyword)
+      .then(businesses => {
+        setBusinesses(businesses)
+      })
+  }
+
+  return (
+    <div className="App">
+      <form onSubmit={searchWithKeyword}>
+        <input type="text" name="keyword" placeholder="Search for businesses..."></input>
+        <input type="submit" value="search"></input>
+      </form>
+      {businesses.map(business => (
+        <p key={business.id}>{business.name}</p>
+      ))}
+    </div>
+  )
+
 }
 
-export default App;
+export default App
