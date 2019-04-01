@@ -1,48 +1,37 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import logo from './logo.svg';
-import './App.css';
-import { simpleAction } from './actions/simpleAction';
+import React, { useState } from 'react'
+import axios from 'axios'
+import {getBusinesses} from './cafedeskAPI'
+import './App.css'
 
-const mapStateToProps = state => ({
-  ...state
- })
+function App() {
+  const [businesses, setBusinesses] = useState([])
 
-const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction())
- })
-
-class App extends Component {
-  simpleAction = (event) => {
-    this.props.simpleAction();
-   }
-   
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-        <pre>
-        {
-          JSON.stringify(this.props)
-        }
-        </pre>
-        <button onClick={this.simpleAction}>Test redux action</button>
-      </div>
-    );
+  const searchWithKeyword = (event) => {
+    event.preventDefault()
+    let keyword = event.target.keyword.value
+    lookupBusiness(keyword)
+    keyword = ''
   }
+
+  const lookupBusiness = (keyword) => {
+    getBusinesses(keyword)
+      .then(businesses => {
+        setBusinesses(businesses)
+      })
+  }
+
+  return (
+    <div className="App">
+      <form onSubmit={searchWithKeyword}>
+        <input type="text" name="keyword" placeholder="Search for businesses..."></input>
+        <input type="submit" value="search"></input>
+      </form>
+      {businesses.map(business => (
+        <p key={business.id}>{business.name}</p>
+      ))}
+    </div>
+  )
+
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App
