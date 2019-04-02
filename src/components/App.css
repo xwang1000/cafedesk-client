@@ -3,6 +3,11 @@ body {
   --secondary-color: #eee;
 }
 
+.nav-list {
+  width: 100%;
+  overflow: hidden;
+}
+
 .tags {
   background-color: var(--main-color);
   padding: .4rem 1rem;
