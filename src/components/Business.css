@@ -1,0 +1,38 @@
+.business-list {
+  margin-bottom: 3rem;
+}
+
+.business-row {
+  background-color: white;
+  padding: 3rem 2rem;
+  border-bottom: .8px solid var(--secondary-color);
+  display: flex;
+  /* height: 12rem; */
+}
+
+.business-row-image {
+  object-fit: cover;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 10px;
+}
+
+.business-row-col2 {
+  margin-left: 2rem;
+}
+
+.business-row-name {
+  font-size: 1.7rem;
+  margin: 1rem 0;
+  padding: 0;
+}
+
+.business-row-close {
+  margin: 0;
+  padding: 0;
+}
+
+.business-row-distance {
+  margin: 0;
+  padding: 0;
+}

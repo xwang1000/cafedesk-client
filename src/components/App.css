@@ -1,0 +1,30 @@
+body {
+  --main-color: rgb(248, 169, 71);
+  --secondary-color: lightgrey;
+}
+
+.tags {
+  background-color: var(--main-color);
+  padding: .4rem 1rem;
+  border-radius: 4px;
+  font-family: Open Sans;
+  font-size: 1rem;
+  color: white;
+  margin: .4rem;
+  margin-left: 0;
+  display: inline-block;
+  opacity: .8;
+}
+
+.nav-bar {
+  display: flex;
+  align-content: space-around;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: var(--secondary-color);
+}
+
+.nav-item:hover {
+  color: var(--main-color);
+}
