@@ -3,6 +3,11 @@ import React, { useState } from 'react'
 import './App.css'
 import HomePage from './HomePage'
 
+import SearchPage from './SearchPage'
+import FavPage from './FavPage'
+import ProfilePage from './ProfilePage'
+import NavBar from './NavBar'
+
 function App() {
   // const [businesses, setBusinesses] = useState([])
 
@@ -34,7 +39,13 @@ function App() {
 
   // SETTING UP REACT COMPONENTS
   return (
-    <HomePage />
+    <div>
+        <HomePage />
+        <SearchPage />
+        <FavPage />
+        <ProfilePage />
+      <NavBar />
+    </div>
   )
 
 }

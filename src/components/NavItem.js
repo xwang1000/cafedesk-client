@@ -3,7 +3,7 @@ import React from 'react'
 const NavItem = props => {
   return (
     <div className="nav-item">
-      <h3>{props.name}</h3>
+      <img src={props.src} alt={props.name}></img>
     </div>
   )
 }

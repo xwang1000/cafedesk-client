@@ -7,7 +7,6 @@
   padding: 3rem 2rem;
   border-bottom: .8px solid var(--secondary-color);
   display: flex;
-  /* height: 12rem; */
 }
 
 .business-row-image {
@@ -28,11 +27,14 @@
 }
 
 .business-row-close {
+  font-size: 1.2rem;
   margin: 0;
   padding: 0;
 }
 
 .business-row-distance {
-  margin: 0;
+  font-size: 1.2rem;
+  opacity: .7;
+  margin: .2rem;
   padding: 0;
 }

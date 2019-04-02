@@ -1,14 +1,13 @@
 import React from 'react'
-import Map from './Map'
+import GoogleApiWrapper from './MapContainer'
 import BusinessList from './BusinessList'
-import NavBar from './NavBar'
+
 const HomePage = () => {
+
   return (
-    <div>
-      <h1>Home</h1>
-      <Map />
+    <div className="home-page">
+      <GoogleApiWrapper />
       <BusinessList />
-      <NavBar />
     </div>
   )
 }
