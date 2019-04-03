@@ -1,13 +1,15 @@
 import React from 'react'
 import NavItem from './NavItem'
 
+const getAsset = (fileName) => `${process.env.PUBLIC_URL}/assets/${fileName}`
+
 const NavBar = () => {
   return (
     <div className="nav-bar">
-      <NavItem name='Home' src={process.env.PUBLIC_URL + '/assets/placeholder.svg'} />
-      <NavItem name='Search' src={process.env.PUBLIC_URL + '/assets/search.svg'} />
-      <NavItem name='Fav' src={process.env.PUBLIC_URL + '/assets/star.svg'} />
-      <NavItem name='Account' src={process.env.PUBLIC_URL + '/assets/user.svg'} />
+      <NavItem to="/" name="Home" src={getAsset('placeholder.svg')} />
+      <NavItem to="/search/" name="Search" src={getAsset('search.svg')} />
+      <NavItem to="/fav/" name="Fav" src={getAsset('star.svg')} />
+      <NavItem to="/profile/" name="Account" src={getAsset('user.svg')} />
     </div>
   )
 }

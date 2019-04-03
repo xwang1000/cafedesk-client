@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 // import {getBusinesses} from '../api/cafedeskAPI'
+
 import './App.css'
 import HomePage from './HomePage'
-
 import SearchPage from './SearchPage'
 import FavPage from './FavPage'
 import ProfilePage from './ProfilePage'
@@ -40,11 +41,15 @@ function App() {
   // SETTING UP REACT COMPONENTS
   return (
     <div>
-        <HomePage />
-        <SearchPage />
-        <FavPage />
-        <ProfilePage />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+          <Route path='/search' component={SearchPage} />
+          <Route path='/fav' component={FavPage} />
+          <Route path='/profile' component={ProfilePage} />
+        </Switch>
       <NavBar />
+      </BrowserRouter>
     </div>
   )
 
