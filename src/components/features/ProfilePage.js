@@ -1,5 +1,5 @@
 import React from 'react'
-import BusinessList from './BusinessList'
+import BusinessList from '../common/BusinessList'
 
 const ProfilePage = () => {
   return (

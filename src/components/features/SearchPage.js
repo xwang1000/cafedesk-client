@@ -1,6 +1,5 @@
 import React from 'react'
-import GoogleApiWrapper from './MapContainer'
-
+import GoogleApiWrapper from '../common/MapContainer'
 
 const SearchPage = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import secrets from '../secrets'
+import secrets from '../../secrets'
 
 const {GOOGLE_API_KEY} = secrets
 

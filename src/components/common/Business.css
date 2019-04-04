@@ -80,7 +80,11 @@
 @keyframes float-up {
   0% {
     top: 500px;
-    opacity: .9;
+    opacity: 0;
+  }
+
+  50% {
+    opacity: .5;
   }
 
   100% {

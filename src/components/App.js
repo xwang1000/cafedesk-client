@@ -3,11 +3,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 // import {getBusinesses} from '../api/cafedeskAPI'
 
 import './App.css'
-import HomePage from './HomePage'
-import SearchPage from './SearchPage'
-import FavPage from './FavPage'
-import ProfilePage from './ProfilePage'
-import NavBar from './NavBar'
+import HomePage from './features/HomePage'
+import SearchPage from './features/SearchPage'
+import FavPage from './features/FavPage'
+import ProfilePage from './features/ProfilePage'
+import SearchResultsContainer from './features/SearchResultsContainer'
+import NavBar from './features/NavBar'
 function App() {
   // const [businesses, setBusinesses] = useState([])
 
@@ -46,6 +47,7 @@ function App() {
           <Route path='/search' component={SearchPage} />
           <Route path='/fav' component={FavPage} />
           <Route path='/profile' component={ProfilePage} />
+          <Route path='/search/results' component={SearchResultsContainer} />
         </Switch>
         
       <NavBar />

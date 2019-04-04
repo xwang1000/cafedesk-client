@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import GoogleApiWrapper from './MapContainer'
-import BusinessList from './BusinessList'
-import BusinessContainer from './BusinessContainer'
-import { getBusinesses } from '../api/cafedeskAPI'
+import GoogleApiWrapper from '../common/MapContainer'
+import BusinessList from '../common/BusinessList'
+import BusinessContainer from '../common/BusinessContainer'
+import { getBusinesses } from '../../api/cafedeskAPI'
 const HomePage = (props) => {
 
   const businesses = [
