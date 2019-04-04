@@ -8,7 +8,6 @@ import SearchPage from './SearchPage'
 import FavPage from './FavPage'
 import ProfilePage from './ProfilePage'
 import NavBar from './NavBar'
-
 function App() {
   // const [businesses, setBusinesses] = useState([])
 
@@ -38,16 +37,17 @@ function App() {
   //   </div>
   // )
 
-  // SETTING UP REACT COMPONENTS
   return (
     <div>
       <BrowserRouter>
         <Switch>
-          <Route exact path='/' component={HomePage} />
+          <Route exact path='/feed/:id' component={HomePage} />
+          <Route path='/feed' component={HomePage}/>
           <Route path='/search' component={SearchPage} />
           <Route path='/fav' component={FavPage} />
           <Route path='/profile' component={ProfilePage} />
         </Switch>
+        
       <NavBar />
       </BrowserRouter>
     </div>

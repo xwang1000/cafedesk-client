@@ -9,7 +9,7 @@ const Container = props => {
     width: '100%',
     height: '20rem',
     position: 'relative',
-    boxShadow: '0px 19px 36px -11px rgba(0,0,0,0.1)'
+    boxShadow: '0px 19px 36px -11px rgba(0,0,0,0.1)',
   }
   return (
     <div style={style} >

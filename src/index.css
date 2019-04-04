@@ -1,17 +1,22 @@
 html {
   font-size: 85%;
   height: 100%;
+  padding: 0 100px;
 }
 
 body {
   margin: 0;
-  padding: 0 100px;
   font-family: 'Open Sans', sans-serif;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 @media screen and (max-width: 850px) {
@@ -23,5 +28,4 @@ code {
   body {
     padding: 0;
   }
-  
 }

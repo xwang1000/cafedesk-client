@@ -9,7 +9,8 @@ module.exports = {
     return new Promise((res, rej) => {
 
       cafedeskAPI
-        .get(`/search/${keyword}`)
+        // .get(`/search/${keyword}`)
+          .get('/search/catfe')
           .then(response => {
             res(response.data.businesses)
           })
