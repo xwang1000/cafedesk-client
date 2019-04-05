@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import GoogleApiWrapper from '../common/MapContainer'
 import BusinessList from '../common/BusinessList'
 import BusinessContainer from '../common/BusinessContainer'
-import { getBusinesses } from '../../api/cafedeskAPI'
+import { getBusinesses, getBusinessById } from '../../api/cafedeskAPI'
+
 const HomePage = (props) => {
 
   const businesses = [
@@ -62,24 +63,33 @@ const HomePage = (props) => {
     }
   ]
 
-  const [selectedId, setSelectedId] = useState('')
   const paramsId = props.match.params.id 
   const [selectedBusiness, setSelectedBusiness] = useState({})
-  
+  const [mapPosition, setMapPosition] = useState({})
+  const [markerPositions, setMarkerPosition] = useState([])
+
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       const businessesQueried = await getBusinesses('paramsId')
+      
+      // Set states
       setSelectedBusiness(businessesQueried[0])
+
+      // set map and markers coordinates
+      setMapPosition(businessesQueried[0].coordinates)
+      setMarkerPosition([businessesQueried[0].coordinates])
+    
     }
     fetchData()
+    
+    // provide empty array to avoide activating it on component updates
   }, [])
 
   return (
     <div className="home-page">
         {paramsId ? <BusinessContainer id={paramsId} business={selectedBusiness}/>: <div></div>}
-        <GoogleApiWrapper />
+        <GoogleApiWrapper mapPosition={mapPosition} markerPositions={markerPositions} />
         <BusinessList businesses={businesses} />
-        {/* conditional rendering business detail based on selected id */}
     </div>
   )
 }

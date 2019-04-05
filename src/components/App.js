@@ -47,7 +47,7 @@ function App() {
           <Route path='/search' component={SearchPage} />
           <Route path='/fav' component={FavPage} />
           <Route path='/profile' component={ProfilePage} />
-          <Route path='/search/results' component={SearchResultsContainer} />
+          {/* <Route path='/search/results' component={SearchResultsContainer} /> */}
         </Switch>
         
       <NavBar />
