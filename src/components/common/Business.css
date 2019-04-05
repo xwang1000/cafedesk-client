@@ -71,10 +71,10 @@
 
 .float-up {
   animation-duration:.6s;
-  animation-name:float-up;
-  animation-iteration-count:1;
-  animation-timing-function:ease-out;
-  animation-fill-mode:forwards;
+  animation-name: float-up;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
 }
 
 @keyframes float-up {
@@ -115,4 +115,29 @@
   height: 13rem;
   border-radius: 10px;
   background-color: #eee;
+}
+
+.loading {
+  text-align: center;
+  padding-top: 100px;
+}
+
+.business-container-loading-img {
+  width: 100px;
+  animation: 1s pulse infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateX(10px);
+  }
+
+  50% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    transform: translateX(10px);
+  }
+
 }

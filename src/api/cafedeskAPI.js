@@ -28,8 +28,8 @@ const businesses = [
     closing_time: 9,
     distance: 300.120,
     coordinates: {
-      latitude: 49.3799726074677,
-      longitude: -123.007153154144
+      latitude: 49.1699726074677,
+      longitude: -123.071153154144
     },
     is_closed: false
   },

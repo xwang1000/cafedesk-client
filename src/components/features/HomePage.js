@@ -86,9 +86,22 @@ const HomePage = (props) => {
     // provide empty array to avoide activating it on component updates
   }, [])
 
+  const setMapCoordinates = (coords) => {
+    if (!coords) {
+      coords = {
+        latitude: 123, 
+        longitude: 123
+      }
+    } 
+    
+    setMarkerPositions([coords])
+    setMapPosition(coords)
+    console.log('coods: ', coords)
+  }
+
   return (
     <div className="home-page">
-        {paramsId ? <BusinessContainer id={paramsId} business={selectedBusiness}/>: <div></div>}
+        {paramsId ? <BusinessContainer id={paramsId} business={selectedBusiness} setMapCoordinates={setMapCoordinates} />: <div></div>}
         <GoogleApiWrapper mapPosition={mapPosition} markerPositions={markerPositions} />
         <BusinessList businesses={businesses} />
     </div>
