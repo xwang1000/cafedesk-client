@@ -9,6 +9,12 @@
   display: flex;
 }
 
+.business-row-col2 .tag-list {
+  width: 100%;
+  height: 3.5rem;
+  overflow: hidden;
+}
+
 .business-row-image {
   object-fit: cover;
   width: 11rem;
@@ -140,4 +146,32 @@
     transform: translateX(10px);
   }
 
+}
+
+.business-container .tag-list {
+  width: 100%;
+  height: 3.5rem;
+}
+
+.tags {
+  background-color: var(--main-color);
+  padding: .4rem 1rem;
+  border-radius: 4px;
+  font-family: Open Sans;
+  font-size: 1.5rem;
+  color: white;
+  margin: .4rem;
+  margin-left: 0;
+  display: inline-block;
+  opacity: .8;
+}
+
+.business-container .tags {
+  padding: .3rem .8rem;
+  margin: .5rem .5rem;
+  margin-left: 0;
+}
+
+.business-container-row2 {
+  margin: 1rem 0;
 }

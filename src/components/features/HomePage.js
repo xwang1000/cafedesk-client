@@ -88,6 +88,7 @@ const HomePage = (props) => {
 
   const setMapCoordinates = (coords) => {
     if (!coords) {
+      // Change to user coords
       coords = {
         latitude: 123, 
         longitude: 123
@@ -96,7 +97,6 @@ const HomePage = (props) => {
     
     setMarkerPositions([coords])
     setMapPosition(coords)
-    console.log('coods: ', coords)
   }
 
   return (

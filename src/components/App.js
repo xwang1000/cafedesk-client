@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 // import {getBusinesses} from '../api/cafedeskAPI'
 
@@ -9,6 +9,15 @@ import FavPage from './features/FavPage'
 import ProfilePage from './features/ProfilePage'
 import SearchResultsContainer from './features/SearchResultsContainer'
 import NavBar from './features/NavBar'
+
+const fetchUserLocation = async (setUserLocation) => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(setUserLocation)
+  } else {
+
+  }
+}
+
 function App() {
   // const [businesses, setBusinesses] = useState([])
 
@@ -37,13 +46,32 @@ function App() {
   //     ))}
   //   </div>
   // )
+  const [user, setUser] = useState({})
+
+  const setUserLocation = location => {
+    setUser({
+      coords: {
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude
+      }
+    })
+  }
+
+  useEffect(() => {
+    fetchUserLocation(setUserLocation)
+  })
 
   return (
     <div>
       <BrowserRouter>
         <Switch>
-          <Route exact path='/feed/:id' component={HomePage} />
-          <Route path='/feed' component={HomePage}/>
+          <Route exact 
+            path='/feed/:id'
+            render={(props) => <HomePage {...props} user={user}  />}
+          />
+          <Route path='/feed' 
+            render={(props) => <HomePage {...props} user={user} />}
+          />
           <Route path='/search' component={SearchPage} />
           <Route path='/fav' component={FavPage} />
           <Route path='/profile' component={ProfilePage} />

@@ -10,7 +10,7 @@ const businesses = [
     alias: "catfe-vancouver-2",
     name: "Catfe",
     image_url: "https://s3-media2.fl.yelpcdn.com/bphoto/fBoz2g-b-DyuiSty_NCQkg/o.jpg",
-    tags: ['quiet', 'free wifi', 'jazzy'],
+    tags: ['quiet', 'free wifi', 'jazzy', 'folk music', 'white noice', 'relaxing', 'folk music', 'white noice', 'relaxing'],
     closing_time: 7,
     distance: 1212.2,
     coordinates: {
@@ -24,7 +24,7 @@ const businesses = [
     alias: "van-pet-yaletown-vancouver",
     name: "Van Pet Yaletown",
     image_url: "https://s3-media1.fl.yelpcdn.com/bphoto/xIdKo18QtipPdDPLbjQVsA/o.jpg",
-    tags: ['laptop-friendly', 'authentic tea', 'hiphop music'],
+    tags: ['laptop-friendly', 'authentic tea', 'hiphop music', 'folk music', 'white noice', 'relaxing', 'folk music', 'white noice', 'relaxing'],
     closing_time: 9,
     distance: 300.120,
     coordinates: {
