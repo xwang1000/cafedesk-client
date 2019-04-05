@@ -66,18 +66,19 @@ const HomePage = (props) => {
   const paramsId = props.match.params.id 
   const [selectedBusiness, setSelectedBusiness] = useState({})
   const [mapPosition, setMapPosition] = useState({})
-  const [markerPositions, setMarkerPosition] = useState([])
+  const [markerPositions, setMarkerPositions] = useState([])
 
   useEffect(() => {
+
     const fetchData = async () => {
-      const businessesQueried = await getBusinesses('paramsId')
+      const businessesQueried = await getBusinesses('cupcake')
       
       // Set states
       setSelectedBusiness(businessesQueried[0])
 
       // set map and markers coordinates
       setMapPosition(businessesQueried[0].coordinates)
-      setMarkerPosition([businessesQueried[0].coordinates])
+      setMarkerPositions([businessesQueried[0].coordinates])
     
     }
     fetchData()

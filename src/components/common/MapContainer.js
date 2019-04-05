@@ -5,9 +5,10 @@ import secrets from '../../secrets'
 const {GOOGLE_API_KEY} = secrets
 
 const Container = props => {
-  console.log(props)
+
   const getFormattedCoordinates = coordinates => {
     const formattedCoordinates = {} 
+
     formattedCoordinates.lat = coordinates.latitude
     formattedCoordinates.lng = coordinates.longitude
     
@@ -21,11 +22,8 @@ const Container = props => {
     boxShadow: '0px 19px 36px -11px rgba(0,0,0,0.1)',
   }
 
-  const coords = {
-    lat: 42.2802714, lng: -123.1248883
-  }
-
-  console.log(getFormattedCoordinates(props.mapPosition))
+  const markers = props.markerPositions.map((markerPosition, index) => 
+    <Marker key={index} position={getFormattedCoordinates(markerPosition)}/>)
 
   return (
     <div style={style} >
@@ -33,23 +31,15 @@ const Container = props => {
         className="google-map-container" 
         google={props.google}
         center={getFormattedCoordinates(props.mapPosition)}
-        // initialCenter={
-        //   getFormattedCoordinates(props.mapPosition)
-        // }
       >
-        <Marker
-          position={{
-            lat: 49.2802714, 
-            lng: -123.1401434
-          }} 
-        />
+      {markers}
       </Map>
     </div>
   )
 }
 
 const LoadingContainer = () => (
-  <div>Fancy loading container!</div>
+  <div className="map-loading"></div>
 )
 
 export default GoogleApiWrapper({
