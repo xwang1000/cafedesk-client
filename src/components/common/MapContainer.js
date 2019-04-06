@@ -4,15 +4,17 @@ import secrets from '../../secrets'
 
 const {GOOGLE_API_KEY} = secrets
 
+const hasPosition = coordinate => {
+  return coordinate.latitude !== undefined && coordinate.longitude !== undefined
+}
+
 const Container = props => {
-
+  console.log('map props: ', props)
   const getFormattedCoordinates = coordinates => {
-    const formattedCoordinates = {} 
-
-    formattedCoordinates.lat = coordinates.latitude
-    formattedCoordinates.lng = coordinates.longitude
-    
-    return formattedCoordinates
+    return {
+      lat: coordinates.latitude,
+      lng: coordinates.longitude
+    } 
   }
 
   const style = {
@@ -22,8 +24,9 @@ const Container = props => {
     boxShadow: '0px 19px 36px -11px rgba(0,0,0,0.1)',
   }
 
-  const markers = props.markerPositions.map((markerPosition, index) => 
-    <Marker key={index} position={getFormattedCoordinates(markerPosition)}/>)
+  const markers = props.markerPositions.filter(hasPosition).map((markerPosition, index) => {
+    return <Marker key={index} position={getFormattedCoordinates(markerPosition)}/>
+  })
 
   return (
     <div style={style} >
@@ -32,7 +35,7 @@ const Container = props => {
         google={props.google}
         center={getFormattedCoordinates(props.mapPosition)}
       >
-      {markers}
+    {markers}
       </Map>
     </div>
   )

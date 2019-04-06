@@ -54,7 +54,7 @@ const fetchBusinessById = async (setState, id, setMapCoordinates) => {
   const business = await getBusinessById(id)
   business.isLoaded = true
   
-  setMapCoordinates(business.coordinates)
+  // setMapCoordinates(business.coordinates)
 
   setState(business)
 }

@@ -24,12 +24,14 @@ function App() {
   const setUserLocation = location => {
     const {latitude, longitude} = location.coords
     const coords = {latitude, longitude}
+
+
+    localStorage.setItem('userCoords', JSON.stringify(coords))
+
     setUser({
-      ...coords
+      coords: JSON.parse(localStorage.getItem('userCoords'))
       }
     )
-    console.log(coords)
-    document.cookie = `userlocation=asdf;domain=cafedesk-server.herokuapp.com;path=/;max-age=31536000`
   }
 
   useEffect(() => {

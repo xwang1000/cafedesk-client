@@ -112,6 +112,13 @@ module.exports = {
   },
 
   getBusinesses (keyword) {
+
+    return new Promise((res, rej) => {
+      setTimeout(() => {
+        res(businesses)
+      }, 1000)
+    })
+    
     return new Promise((res, rej) => {
       cafedeskAPI
         .get(`/search/${keyword}`)
