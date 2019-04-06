@@ -42,14 +42,6 @@ const renderBusinessContainerLoading = () => {
         <div className="business-container-void"></div>
       </Link>
       <div className="business-container float-up loading">
-        {/* <div className="business-container-row1">
-          <div className="business-container-col1">
-            <div className="business-container-pic"></div>
-          </div>
-          <div className="business-container-col2">
-            <h2>-----</h2>
-          </div>
-        </div> */}
         <img className="business-container-loading-img" src={getAsset('coffee-cup.svg')} />
       </div>
     </div>

@@ -3,6 +3,10 @@ body {
   --secondary-color: #eee;
 }
 
+h1 {
+  opacity: .5;
+}
+
 .nav-bar {
   display: flex;
   justify-content: space-around;
@@ -44,4 +48,50 @@ body {
   position: relative;
   box-shadow: 0px 19px 36px -11px rgba(0,0,0,0.1);
   background-color: #eee;
+}
+
+.loading-icon-container {
+  text-align: center;
+  padding-top: 200px;
+}
+
+.loading-icon {
+  width: 100px;
+  animation: 1s pulse infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateX(10px);
+  }
+
+  50% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    transform: translateX(10px);
+  }
+}
+
+.fav-page h1 {
+  font-size: 2rem;
+  padding-left: 2rem;
+  padding-top: 2rem;
+}
+
+.profile-page h1 {
+  font-size: 2rem;
+}
+
+.profile-header {
+  padding: 2rem;
+}
+
+.profile-header p {
+  font-size: 1.3rem;
+}
+
+.profile-history-head {
+  padding-left: 2rem;
 }

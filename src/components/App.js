@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-// import {getBusinesses} from '../api/cafedeskAPI'
 
 import './App.css'
 import HomePage from './features/HomePage'
@@ -19,47 +18,23 @@ const fetchUserLocation = async (setUserLocation) => {
 }
 
 function App() {
-  // const [businesses, setBusinesses] = useState([])
 
-  // const searchWithKeyword = (event) => {
-  //   event.preventDefault()
-  //   let keyword = event.target.keyword.value
-  //   lookupBusiness(keyword)
-  //   keyword = ''
-  // }
-
-  // const lookupBusiness = (keyword) => {
-  //   getBusinesses(keyword)
-  //     .then(businesses => {
-  //       setBusinesses(businesses)
-  //     })
-  // }
-
-  // return (
-  //   <div className="App">
-  //     <form onSubmit={searchWithKeyword}>
-  //       <input type="text" name="keyword" placeholder="Search for businesses..."></input>
-  //       <input type="submit" value="search"></input>
-  //     </form>
-  //     {businesses.map(business => (
-  //       <p key={business.id}>{business.name}</p>
-  //     ))}
-  //   </div>
-  // )
   const [user, setUser] = useState({})
 
   const setUserLocation = location => {
+    const {latitude, longitude} = location.coords
+    const coords = {latitude, longitude}
     setUser({
-      coords: {
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude
+      ...coords
       }
-    })
+    )
+    console.log(coords)
+    document.cookie = `userlocation=asdf;domain=cafedesk-server.herokuapp.com;path=/;max-age=31536000`
   }
 
   useEffect(() => {
     fetchUserLocation(setUserLocation)
-  })
+  }, [])
 
   return (
     <div>

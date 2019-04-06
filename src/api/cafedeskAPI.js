@@ -86,6 +86,22 @@ const getBusinessByIdHelper = id => {
 }
 
 module.exports = {
+  getViewedBusinessesByUserId (id) {
+    return new Promise((res, rej) => {
+      setTimeout(() => {
+        res(businesses)
+      }, 1000)
+    })
+  },
+
+  getFavouriteBusinessesByUserId (id) {
+    return new Promise((res, rej) => {
+      setTimeout(() => {
+        res(businesses)
+      }, 1000)
+    })
+  },
+
   getBusinessById (id) {
 
     return new Promise((res, rej) => {
