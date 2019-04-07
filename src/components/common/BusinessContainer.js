@@ -8,13 +8,14 @@ const getAsset = (fileName) => `${process.env.PUBLIC_URL}/assets/${fileName}`
 const renderBusinessContainer = (props) => {
   const {image_url, name, distance, is_closed, tags} = props.business
   const distanceInKm = Math.floor(distance / 10) / 100
+  const goBack = () => {
+    window.history.back();
+  }
 
   return (
-    <div className="business-container-bg">
-      <Link to="/feed/">
-        <div className="business-container-void"></div>
-      </Link>
+    <div>
       <div className="business-container float-up">
+      <h1 onClick={goBack}>Go Back</h1>
         <div className="business-container-row1">
           <div className="business-container-col1">
             <img className="business-container-pic" src={image_url} alt={name}></img>
@@ -48,13 +49,11 @@ const renderBusinessContainerLoading = () => {
   )
 }
 
-const fetchBusinessById = async (setState, id, setMapCoordinates) => {
+const fetchBusinessById = async (setState, id) => {
   setState({isLoaded: false})
   
   const business = await getBusinessById(id)
   business.isLoaded = true
-  
-  // setMapCoordinates(business.coordinates)
 
   setState(business)
 }
@@ -62,7 +61,7 @@ const fetchBusinessById = async (setState, id, setMapCoordinates) => {
 const BusinessContainer = (props) => {
   const [business, setBusiness] = useState({isLoaded: false})
   useEffect(() => {
-    fetchBusinessById(setBusiness, props.id, props.setMapCoordinates)
+    fetchBusinessById(setBusiness, props.id)
   }, {})
 
   if (business.isLoaded) {

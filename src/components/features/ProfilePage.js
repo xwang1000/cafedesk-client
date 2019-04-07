@@ -24,7 +24,7 @@ const renderProfilePage = props => {
 
       <div className="profile-history">
         <h1 className="profile-history-head">History</h1>
-        <BusinessList businesses={props.businesses} />
+        <BusinessList businesses={props.businesses} cardShowMap={true} />
       </div>
     </div>
   )

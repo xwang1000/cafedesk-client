@@ -1,16 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import TagList from './TagList'
 import './Business.css'
 
 const BusinessRow = props => {
-  const { business, onClickBusiness } = props
-  const onClick = () => {
-    onClickBusiness(business.id)
-  }
-
+  const { business } = props
+  const { path } = props
   return (
-    <Link to={`/feed/${business.id}`}>
+    <Link to={`/${path || 'feed'}/${business.id}`}>
       <div className="business-row">
           <div className="business-row-col1">
             <img className="business-row-image" src={business.image_url}></img>

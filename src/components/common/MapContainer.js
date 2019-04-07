@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react'
+import { getAsset } from '../../utils'
+
 import secrets from '../../secrets'
 
 const {GOOGLE_API_KEY} = secrets
@@ -34,6 +36,7 @@ const Container = props => {
         className="google-map-container" 
         google={props.google}
         center={getFormattedCoordinates(props.mapPosition)}
+        initialCenter={getFormattedCoordinates({latitude: 49.2813891, longitude: -123.1144766})}
       >
     {markers}
       </Map>
@@ -42,7 +45,9 @@ const Container = props => {
 }
 
 const LoadingContainer = () => (
-  <div className="map-loading"></div>
+  <div className="map-loading">
+    
+  </div>
 )
 
 export default GoogleApiWrapper({

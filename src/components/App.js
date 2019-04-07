@@ -40,6 +40,7 @@ function App() {
 
   return (
     <div>
+      
       <BrowserRouter>
         <Switch>
           <Route exact 
@@ -49,7 +50,9 @@ function App() {
           <Route path='/feed' 
             render={(props) => <HomePage {...props} user={user} />}
           />
-          <Route path='/search' component={SearchPage} />
+          <Route path='/search' 
+            render={(props) => <SearchPage {...props} user={user} />}
+          />
           <Route path='/fav' component={FavPage} />
           <Route path='/profile' component={ProfilePage} />
           {/* <Route path='/search/results' component={SearchResultsContainer} /> */}
