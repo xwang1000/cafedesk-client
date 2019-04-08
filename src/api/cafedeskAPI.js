@@ -47,6 +47,19 @@ module.exports = {
     })
   },
 
+  getBusinessByKeyword(keyword) {
+    return new Promise((res, rej) => {
+      cafedeskAPI
+        .get(`/search/${keyword}`)
+        .then(response => {
+          res(response.data)
+        })
+        .catch(error => {
+          rej(error)
+        })
+    })
+  },
+
   // return recommendations
   getBusinesses() {
     return new Promise((res, rej) => {
