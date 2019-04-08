@@ -13,8 +13,6 @@ const fetchBusinessById = async (id, setBusiness, setMarkerPositions) => {
 const fetchRecommendations = async (setBusinesses, setMarkerPositions) => {
       
   const businessesQueried = await getBusinesses()
-  
-  // Set states
   const markers = businessesQueried.map(business => {
     if (business.coordinates) {
       return business.coordinates
@@ -38,21 +36,27 @@ const HomePage = (props) => {
   useEffect(() => {
     // set map center to user location
     setMapPosition(props.user.coords)
-    // set userMarker to user location
+    setMarkerPositions([props.user.coords])
 
+    // set userMarker to user location
     if (paramsId) {
+      fetchRecommendations(setBusinesses, setMarkerPositions)
       fetchBusinessById(paramsId, setBusiness, setMarkerPositions)
     } else {
       fetchRecommendations(setBusinesses, setMarkerPositions)
     }
   }, [])
 
+  const setMapAndMarkers = (map, markers) => {
+    setMapPosition(map)
+    setMarkerPositions(markers)
+  }
+
   return (
     <div className="home-page">
-    {/* setMapCoordinates={setMapCoordinates}  */}
-        {paramsId ? <BusinessContainer id={paramsId} business={business} />: <div></div>}
-        <GoogleApiWrapper mapPosition={props.user.coords} markerPositions={markerPositions} />
-        <BusinessList businesses={businesses} />
+      {paramsId ? <BusinessContainer id={paramsId} business={business} />: <div></div>}
+      <GoogleApiWrapper mapPosition={mapPosition} setMapAndMarkers={setMapAndMarkers} markerPositions={[...markerPositions, business.coordinates || {}]} />
+      <BusinessList businesses={businesses} />
     </div>
   )
 }

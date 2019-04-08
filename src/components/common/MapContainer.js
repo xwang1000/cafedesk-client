@@ -7,11 +7,17 @@ import secrets from '../../secrets'
 const {GOOGLE_API_KEY} = secrets
 
 const hasPosition = coordinate => {
+  if (coordinate === undefined) {
+    return false
+  }
   return coordinate.latitude !== undefined && coordinate.longitude !== undefined
 }
 
+const LoadingContainer = () => (<div className="map-loading"></div>)
+
 const Container = props => {
   console.log('map props: ', props)
+
   const getFormattedCoordinates = coordinates => {
     return {
       lat: coordinates.latitude,
@@ -30,6 +36,10 @@ const Container = props => {
     return <Marker key={index} position={getFormattedCoordinates(markerPosition)}/>
   })
 
+  // if (props.mapPosition === undefined) {
+  //   return LoadingContainer()
+  // }
+
   return (
     <div style={style} >
       <Map 
@@ -44,11 +54,6 @@ const Container = props => {
   )
 }
 
-const LoadingContainer = () => (
-  <div className="map-loading">
-    
-  </div>
-)
 
 export default GoogleApiWrapper({
   apiKey: GOOGLE_API_KEY,

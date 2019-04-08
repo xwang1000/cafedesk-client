@@ -19,23 +19,25 @@ const fetchUserLocation = async (setUserLocation) => {
 
 function App() {
 
-  const [user, setUser] = useState({})
+  const [userCoords, setUserCoords] = useState({})
+  const [userTags, setUserTags] = useState([])
 
-  const setUserLocation = location => {
+  const changeUserCoords = location => {
     const {latitude, longitude} = location.coords
     const coords = {latitude, longitude}
 
 
     localStorage.setItem('userCoords', JSON.stringify(coords))
 
-    setUser({
+    setUserCoords({ 
       coords: JSON.parse(localStorage.getItem('userCoords'))
       }
     )
   }
 
   useEffect(() => {
-    fetchUserLocation(setUserLocation)
+    fetchUserLocation(changeUserCoords)
+    setUserTags(['free wifi', 'jazzy music'])
   }, [])
 
   return (
@@ -45,13 +47,25 @@ function App() {
         <Switch>
           <Route exact 
             path='/feed/:id'
-            render={(props) => <HomePage {...props} user={user}  />}
+            render={(props) => <HomePage {...props} 
+            user={{
+              coords: userCoords,
+              tags: userTags
+            }}  />}
           />
           <Route path='/feed' 
-            render={(props) => <HomePage {...props} user={user} />}
+            render={(props) => <HomePage {...props} 
+            user={{
+              coords: userCoords,
+              tags: userTags
+            }} />}
           />
           <Route path='/search' 
-            render={(props) => <SearchPage {...props} user={user} />}
+            render={(props) => <SearchPage {...props} 
+            user={{
+              coords: userCoords,
+              tags: userTags
+            }} />}
           />
           <Route path='/fav' component={FavPage} />
           <Route path='/profile' component={ProfilePage} />

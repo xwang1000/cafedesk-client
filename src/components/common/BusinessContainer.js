@@ -14,7 +14,7 @@ const renderBusinessContainer = (props) => {
 
   return (
     <div>
-      <div className="business-container float-up">
+      <div className="business-container">
       <h1 onClick={goBack}>Go Back</h1>
         <div className="business-container-row1">
           <div className="business-container-col1">
