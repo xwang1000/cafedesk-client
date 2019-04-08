@@ -8,6 +8,7 @@ const {GOOGLE_API_KEY} = secrets
 
 const hasPosition = coordinate => {
   if (coordinate === undefined) {
+    console.log('coordinate is undefined')
     return false
   }
   return coordinate.latitude !== undefined && coordinate.longitude !== undefined
@@ -36,17 +37,13 @@ const Container = props => {
     return <Marker key={index} position={getFormattedCoordinates(markerPosition)}/>
   })
 
-  // if (props.mapPosition === undefined) {
-  //   return LoadingContainer()
-  // }
-
   return (
     <div style={style} >
       <Map 
         className="google-map-container" 
         google={props.google}
         center={getFormattedCoordinates(props.mapPosition)}
-        initialCenter={getFormattedCoordinates({latitude: 49.2813891, longitude: -123.1144766})}
+        defaultCenter={getFormattedCoordinates({latitude: 49.2813891, longitude: -123.1144766})}
       >
     {markers}
       </Map>

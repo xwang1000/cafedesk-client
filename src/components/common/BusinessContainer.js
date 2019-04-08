@@ -62,6 +62,7 @@ const BusinessContainer = (props) => {
   const [business, setBusiness] = useState({isLoaded: false})
   useEffect(() => {
     fetchBusinessById(setBusiness, props.id)
+    props.showOnMap()
   }, {})
 
   if (business.isLoaded) {

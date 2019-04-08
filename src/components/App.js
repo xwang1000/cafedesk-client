@@ -26,12 +26,9 @@ function App() {
     const {latitude, longitude} = location.coords
     const coords = {latitude, longitude}
 
-
     localStorage.setItem('userCoords', JSON.stringify(coords))
-
-    setUserCoords({ 
-      coords: JSON.parse(localStorage.getItem('userCoords'))
-      }
+    setUserCoords(
+      JSON.parse(localStorage.getItem('userCoords'))
     )
   }
 
