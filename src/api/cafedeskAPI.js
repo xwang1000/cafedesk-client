@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 const cafedeskAPI = axios.create({
-  baseURL: 'http://localhost:8080/'
+  baseURL: 'https://cafedesk-server.herokuapp.com'
 })
 
 module.exports = {
