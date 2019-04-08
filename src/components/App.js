@@ -9,9 +9,9 @@ import ProfilePage from './features/ProfilePage'
 // import SearchResultsContainer from './features/SearchResultsContainer'
 import NavBar from './features/NavBar'
 
-const fetchUserLocation = async (setUserLocation) => {
+const fetchUserCoords = async (setUserCoords) => {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(setUserLocation)
+    navigator.geolocation.getCurrentPosition(setUserCoords)
   } 
 }
 
@@ -31,8 +31,9 @@ function App() {
   }
 
   useEffect(() => {
-    fetchUserLocation(changeUserCoords)
-    setUserTags(['free wifi', 'jazzy music'])
+    fetchUserCoords(changeUserCoords)
+    // setUserTags(['free wifi', 'jazzy music'])
+    localStorage.setItem('userTags', JSON.stringify(['free wifi', 'jazzy music']))
   }, [])
 
   return (
