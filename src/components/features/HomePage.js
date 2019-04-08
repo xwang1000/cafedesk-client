@@ -72,7 +72,7 @@ const HomePage = (props) => {
       <GoogleApiWrapper mapPosition={mapPosition || props.user.coords} markerPositions={markerPositions} />
       {
         props.user.tags.length === 0 ? 
-        <PreferenceBox /> :
+        <PreferenceBox changeUserTags={props.changeUserTags} /> :
         <BusinessList businesses={businesses} /> 
         
       }

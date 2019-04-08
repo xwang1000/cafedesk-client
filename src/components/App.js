@@ -30,6 +30,11 @@ function App() {
     )
   }
 
+  const changeUserTags = tags => {
+    console.log('change user tags: ', tags)
+    setUserTags(tags)
+  }
+
   useEffect(() => {
     fetchUserCoords(changeUserCoords)
     // setUserTags(['free wifi', 'jazzy music'])
@@ -54,7 +59,9 @@ function App() {
             user={{
               coords: userCoords,
               tags: userTags
-            }} />}
+            }}
+            changeUserTags={changeUserTags}
+            />}
           />
           <Route path='/search' 
             render={(props) => <SearchPage {...props} 
