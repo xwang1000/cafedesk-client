@@ -12,9 +12,7 @@ import NavBar from './features/NavBar'
 const fetchUserLocation = async (setUserLocation) => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(setUserLocation)
-  } else {
-
-  }
+  } 
 }
 
 function App() {

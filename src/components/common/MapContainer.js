@@ -44,6 +44,7 @@ const Container = props => {
         google={props.google}
         center={getFormattedCoordinates(props.mapPosition)}
         defaultCenter={getFormattedCoordinates({latitude: 49.2813891, longitude: -123.1144766})}
+        initialCenter={getFormattedCoordinates(JSON.parse(localStorage.getItem('userCoords')))}
       >
     {markers}
       </Map>

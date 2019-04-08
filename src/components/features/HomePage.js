@@ -45,7 +45,7 @@ const HomePage = (props) => {
   if (mapPosition === undefined || markerPositions.length === 0) {
     return (
       <div>
-        Loading
+        Loading...
       </div>
     )
   }
@@ -58,7 +58,7 @@ const HomePage = (props) => {
   return (
     <div className="home-page">
       {paramsId ? <BusinessContainer id={paramsId} business={business} showOnMap={showOnMap} />: <div></div>}
-      <GoogleApiWrapper mapPosition={mapPosition} markerPositions={markerPositions} />
+      <GoogleApiWrapper mapPosition={mapPosition || props.user.coords} markerPositions={markerPositions} />
       <BusinessList businesses={businesses} />
     </div>
   )
