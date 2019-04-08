@@ -1,44 +1,59 @@
 const axios = require('axios')
 
 const cafedeskAPI = axios.create({
-  baseURL: 'https://cafedesk-server.herokuapp.com'
+  baseURL: 'http://localhost:8080/'
 })
 
 module.exports = {
-  // get user history
+  // get user view history
   getViewedBusinessesByUserId(id) {
     return new Promise((res, rej) => {
       cafedeskAPI
-        .get(`/users/${id}/views`)
-        .then((response) => {
-          res(response);
+        .get(`/users/${id}/favourites`)
+        .then(response => {
+          res(response.data)
+        })
+        .catch(error => {
+          rej(error)
         })
     })
   },
 
   // get user favourites
   getFavouriteBusinessesByUserId(id) {
-    return new Promise((res, rej) => {})
-  },
-
-  // get business details
-  getBusinessById(id) {
-    return new Promise((res, rej) => {})
-  },
-
-  // get recommendations
-  getBusinesses(tags = ['quiet', 'coffee']) {
-    console.log(tags);
-
     return new Promise((res, rej) => {
       cafedeskAPI
-        .get(`/recommendations`, {
-          headers: tags,
-        })
+        .get(`/users/${id}/favourites`)
         .then(response => {
-          console.log(response);
+          res(response.data)
+        })
+        .catch(error => {
+          rej(error)
+        })
+    })
+  },
 
-          res(response)
+  // get specific business
+  getBusinessById(id) {
+    return new Promise((res, rej) => {
+      cafedeskAPI
+        .get(`/businesses/${id}`)
+        .then(response => {
+          res(response.data)
+        })
+        .catch(error => {
+          rej(error)
+        })
+    })
+  },
+
+  // return recommendations
+  getBusinesses() {
+    return new Promise((res, rej) => {
+      cafedeskAPI
+        .get(`/recommendations`)
+        .then(response => {
+          res(response.data)
         })
         .catch(error => {
           rej(error)
