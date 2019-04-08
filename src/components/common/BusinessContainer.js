@@ -63,6 +63,9 @@ const BusinessContainer = (props) => {
   useEffect(() => {
     fetchBusinessById(setBusiness, props.id)
     props.showOnMap()
+    return () => {
+      props.resetMap()
+    }
   }, {})
 
   if (business.isLoaded) {

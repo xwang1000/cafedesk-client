@@ -55,9 +55,20 @@ const HomePage = (props) => {
     fetchBusinessById(paramsId, setBusiness, setMarkerPositions, setMapPosition)
   }
 
+  const resetMap = () => {
+    const markers = businesses.map(business => {
+      if (business.coordinates) {
+        return business.coordinates
+      } 
+      return {}
+    })
+
+    setMarkerPositions(markers)
+  }
+
   return (
     <div className="home-page">
-      {paramsId ? <BusinessContainer id={paramsId} business={business} showOnMap={showOnMap} />: <div></div>}
+      {paramsId ? <BusinessContainer id={paramsId} business={business} showOnMap={showOnMap} resetMap={resetMap} />: <div></div>}
       <GoogleApiWrapper mapPosition={mapPosition || props.user.coords} markerPositions={markerPositions} />
       <BusinessList businesses={businesses} />
     </div>

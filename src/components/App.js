@@ -6,7 +6,7 @@ import HomePage from './features/HomePage'
 import SearchPage from './features/SearchPage'
 import FavPage from './features/FavPage'
 import ProfilePage from './features/ProfilePage'
-import SearchResultsContainer from './features/SearchResultsContainer'
+// import SearchResultsContainer from './features/SearchResultsContainer'
 import NavBar from './features/NavBar'
 
 const fetchUserLocation = async (setUserLocation) => {
