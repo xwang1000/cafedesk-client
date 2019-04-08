@@ -7,7 +7,13 @@ const cafedeskAPI = axios.create({
 module.exports = {
   // get user history
   getViewedBusinessesByUserId(id) {
-    return new Promise((res, rej) => {})
+    return new Promise((res, rej) => {
+      cafedeskAPI
+        .get(`/users/${id}/views`)
+        .then((response) => {
+          res(response);
+        })
+    })
   },
 
   // get user favourites
@@ -21,12 +27,18 @@ module.exports = {
   },
 
   // get recommendations
-  getBusinesses(keyword) {
+  getBusinesses(tags = ['quiet', 'coffee']) {
+    console.log(tags);
+
     return new Promise((res, rej) => {
       cafedeskAPI
-        .get(`/search/${keyword}`)
+        .get(`/recommendations`, {
+          headers: tags,
+        })
         .then(response => {
-          res(response.data.businesses)
+          console.log(response);
+
+          res(response)
         })
         .catch(error => {
           rej(error)
