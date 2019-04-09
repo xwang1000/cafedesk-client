@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { getBusinessById } from '../../api/cafedeskAPI'
 import TagList from '../common/TagList'
 
@@ -57,11 +56,7 @@ const fetchBusinessById = async (setState, id) => {
 const BusinessContainer = (props) => {
   const [business, setBusiness] = useState({isLoaded: false})
   useEffect(() => {
-    fetchBusinessById(setBusiness, props.id)
-    props.showOnMap()
-    return () => {
-      props.resetMap()
-    }
+    fetchBusinessById(setBusiness, props.match.params.businessId)
   }, {})
 
   if (business.isLoaded) {

@@ -5,7 +5,7 @@ const renderTagListLoading = () => {
   return <div></div>
 }
 const TagList = props => {
-  console.log('tag list props: ', props)
+
   if (props.tags === undefined) {
     return renderTagListLoading()
   }

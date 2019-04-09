@@ -16,7 +16,6 @@ const allTagsData =
 
 const PreferenceBox = props => {
   const [allTags, setAllTags] = useState([])
-  const [selectedTags, setSelectedTags] = useState([])
 
   useEffect(() => {
     const tags = allTagsData.map(tag => {
@@ -46,7 +45,7 @@ const PreferenceBox = props => {
       }
     }
 
-    setSelectedTags(allTagsCopy)
+    setAllTags(allTagsCopy)
   }
 
   const tags = allTags.map(tag => [

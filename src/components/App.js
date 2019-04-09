@@ -37,8 +37,6 @@ function App() {
 
   useEffect(() => {
     fetchUserCoords(changeUserCoords)
-    // setUserTags(['free wifi', 'jazzy music'])
-    localStorage.setItem('userTags', JSON.stringify(['free wifi', 'jazzy music']))
   }, [])
 
   return (
@@ -46,14 +44,6 @@ function App() {
       
       <BrowserRouter>
         <Switch>
-          <Route exact 
-            path='/feed/:id'
-            render={(props) => <HomePage {...props} 
-            user={{
-              coords: userCoords,
-              tags: userTags
-            }}  />}
-          />
           <Route path='/feed' 
             render={(props) => <HomePage {...props} 
             user={{
@@ -75,7 +65,7 @@ function App() {
           {/* <Route path='/search/results' component={SearchResultsContainer} /> */}
         </Switch>
         
-      <NavBar />
+        <NavBar />
       </BrowserRouter>
     </div>
   )
