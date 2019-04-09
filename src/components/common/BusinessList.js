@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import BusinessRow from './BusinessRow'
-import { getBusinesses, getFavouriteBusinessesByUserId } from '../../api/cafedeskAPI'
+import { getBusinesses, getFavouriteBusinessesByUserId, getViewedBusinessesByUserId } from '../../api/cafedeskAPI'
 
 const fetchBusinesses = async (setState, fetchType) => {
   setState({loaded: false})
@@ -13,6 +13,10 @@ const fetchBusinesses = async (setState, fetchType) => {
 
   if (fetchType === 'favourite') {
     businesses = await getFavouriteBusinessesByUserId(1)
+  }
+
+  if (fetchType === 'history') {
+    businesses = await getViewedBusinessesByUserId(1)
   }
 
   const newState = {
