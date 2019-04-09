@@ -4,13 +4,13 @@ import { getBusinessById } from '../../api/cafedeskAPI'
 import TagList from '../common/TagList'
 
 const getAsset = (fileName) => `${process.env.PUBLIC_URL}/assets/${fileName}`
+const goBack = () => {
+  window.history.back();
+}
 
 const renderBusinessContainer = (props) => {
   const {image_url, name, distance, is_closed, tags} = props.business
   const distanceInKm = Math.floor(distance / 10) / 100
-  const goBack = () => {
-    window.history.back();
-  }
 
   return (
     <div>
@@ -38,13 +38,9 @@ const renderBusinessContainer = (props) => {
 
 const renderBusinessContainerLoading = () => {
   return (
-    <div className="business-container-bg">
-      <Link to="/feed/">
-        <div className="business-container-void"></div>
-      </Link>
-      <div className="business-container float-up loading">
-        <img className="business-container-loading-img" src={getAsset('coffee-cup.svg')} />
-      </div>
+    <div className="business-container float-up loading">
+      <h1 onClick={goBack}>Go Back</h1>
+      <img className="business-container-loading-img" src={getAsset('coffee-cup.svg')} />
     </div>
   )
 }
