@@ -149,7 +149,7 @@
   height: 3.5rem;
 }
 
-.tags {
+.tag {
   background-color: var(--main-color);
   padding: .4rem 1rem;
   border-radius: 4px;
@@ -159,7 +159,14 @@
   margin: .4rem;
   margin-left: 0;
   display: inline-block;
-  opacity: .8;
+}
+
+.tag-interactive:hover .tag {
+  cursor: pointer;
+}
+
+.tag-interactive:not(.tag-interactive--selected) .tag {
+  opacity: .6;
 }
 
 .business-container .tags {
