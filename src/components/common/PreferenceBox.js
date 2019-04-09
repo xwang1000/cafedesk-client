@@ -31,7 +31,8 @@ const PreferenceBox = props => {
   }, {})
 
   const updateTags = () => {
-    props.changeUserTags(['some tags', 'right here', 'its working!'])
+    const tags = allTags.filter(tag => tag.selected)
+    props.changeUserTags(tags)
   }
 
   const toggleTag = (tagName) => {
