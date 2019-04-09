@@ -10,7 +10,7 @@ const BusinessRow = props => {
   const { path, match } = props
   return (
     <div>
-      <Link to={`/feed/${business.id}`}>
+      {/* <Link to={`/feed/${business.id}`}> */}
         <div className="business-row">
             <div className="business-row-col1">
               <img className="business-row-image" src={business.image_url}></img>
@@ -23,7 +23,7 @@ const BusinessRow = props => {
               <TagList tags = {business.tags} />
             </div>
         </div>
-        </Link>
+        {/* </Link> */}
     </div>
   )
 }

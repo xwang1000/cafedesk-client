@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import BusinessRow from './BusinessRow'
 import { getBusinesses, getFavouriteBusinessesByUserId } from '../../api/cafedeskAPI'
 
@@ -33,7 +34,13 @@ const BusinessList = (props) => {
   if (state.loaded) {
     return (
       <div className="business-list">
-        {state.businesses.map(business => <BusinessRow key={business.id} business={business} showMap={props.cardShowMap} />)}
+        {state.businesses.map(business => (
+          <Link to={`${props.match.path}/${business.id}`}>
+            <BusinessRow key={business.id} business={business} showMap={props.cardShowMap} />
+          </Link>
+        )
+        
+        )}
       </div>
     )
   } else {

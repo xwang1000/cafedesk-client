@@ -29,7 +29,6 @@ const HomePage = (props) => {
         <PreferenceBox changeUserTags={props.changeUserTags} userTags={props.user.tags} resetMap={resetMap} /> :
       } */}
       <Route
-        exact
         path={props.match.path} 
         render={(props) => (
           <BusinessList

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import BusinessList from '../common/BusinessList'
 import { getViewedBusinessesByUserId } from '../../api/cafedeskAPI'
 import { getAsset } from '../../utils'
+import { Route } from 'react-router-dom'
 
 const fetchBusinesses = async (setData) => {
   setData({isLoaded: false})
@@ -24,7 +25,22 @@ const renderProfilePage = props => {
 
       <div className="profile-history">
         <h1 className="profile-history-head">History</h1>
-        <BusinessList businesses={props.businesses} cardShowMap={true} />
+        <Route
+          path={props.match.path} 
+          render={(props) => (
+            <BusinessList
+              {...props}
+              fetchType="history"
+            />
+          )}
+        />
+        <Route
+          path={`${props.match.path}/:businessId`}
+          render={(props) => 
+            (<BusinessContainer 
+              {...props} 
+            />)}
+        />
       </div>
     </div>
   )
