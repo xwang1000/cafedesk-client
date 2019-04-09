@@ -1,68 +1,44 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CafeDesk
 
-## Available Scripts
+### Main Contributors: [Vincent Wong](https://github.com/vnctwong), [Yves Desjardins](https://github.com/YvesDesjardins), [Xuenan Wang](https://github.com/xwang1000)
 
-In the project directory, you can run:
+### Relevant repositories:
+- Server - https://github.com/xwang1000/cafedesk-server
+- Client -  https://github.com/xwang1000/cafedesk-client
 
-### `npm start`
+## Overview
+CafeDesk is a webapp designed to provide users with a more focused view of the coffee shops and tea houses in Vancouver with the aim to make finding an area to study/work in as easy as possible!
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting Started (User)
+- Hop onto our website at https://tempory-doesnt-exist-yet.com
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Getting Started (Developer)
+- Clone the server
+  1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
+  2. Update the .env file with your correct local information
+  3. Install dependencies: `npm i`
+  4. Run migrations: `npx sequelize db:migrate`
+  6. Run the seed: `npx sequelize db:seed:all`
+  7. Run the server: `npm start`
+- Clone the client
+  1. Create the `./src/secrets.js` by using `secrets-example.js` as a reference: `cp secrets-example.js secrets.js`
+  2. Update the secrets.js file with your correct local information
+  3. Install dependencies: `npm i`
+  7. Run the server: `npm start`
+  8. Visit `http://localhost:3000/`
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Dotenv
+- ExpressJS
+- Node.JS
+- Sequelize
+- Axios
+- React
+- React-router
+- CircleCI
+- Jest
+- Heroku
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Known Issues
+- Let us know if you identify any!
