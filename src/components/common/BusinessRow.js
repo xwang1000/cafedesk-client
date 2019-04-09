@@ -1,16 +1,12 @@
-import React, { useState } from 'react'
-import { Link, Route } from 'react-router-dom'
+import React from 'react'
 
 import TagList from './TagList'
-import BusinessContainer from './BusinessContainer'
 import './Business.css'
 
 const BusinessRow = props => {
   const { business } = props
-  const { path, match } = props
   return (
     <div>
-      {/* <Link to={`/feed/${business.id}`}> */}
         <div className="business-row">
             <div className="business-row-col1">
               <img className="business-row-image" src={business.image_url}></img>
@@ -23,7 +19,6 @@ const BusinessRow = props => {
               <TagList tags = {business.tags} />
             </div>
         </div>
-        {/* </Link> */}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import BusinessList from '../common/BusinessList'
 import BusinessContainer from '../common/BusinessContainer'
 import { Route } from 'react-router-dom'
