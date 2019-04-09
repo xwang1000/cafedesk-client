@@ -39,7 +39,9 @@ const HomePage = (props) => {
   const [markerPositions, setMarkerPositions] = useState([])
 
   useEffect(() => {
-    fetchRecommendations(setBusinesses, setMarkerPositions)
+    if (props.user.tags.length !== 0) {
+      fetchRecommendations(setBusinesses, setMarkerPositions)
+    }
   }, [])
 
   const showOnMap = () => {
@@ -48,17 +50,17 @@ const HomePage = (props) => {
   }
 
   const resetMap = () => {
+    fetchRecommendations(setBusinesses, setMarkerPositions)
     const markers = businesses.map(business => {
       if (business.coordinates) {
         return business.coordinates
       } 
       return {}
     })
-
     setMarkerPositions(markers)
   }
 
-  if (mapPosition === undefined || markerPositions.length === 0) {
+  if (mapPosition === undefined) {
     return (
       <div>
         Loading...
@@ -72,9 +74,8 @@ const HomePage = (props) => {
       <GoogleApiWrapper mapPosition={mapPosition || props.user.coords} markerPositions={markerPositions} />
       {
         props.user.tags.length === 0 ? 
-        <PreferenceBox changeUserTags={props.changeUserTags} /> :
+        <PreferenceBox changeUserTags={props.changeUserTags} userTags={props.user.tags} resetMap={resetMap} /> :
         <BusinessList businesses={businesses} /> 
-        
       }
     </div>
   )

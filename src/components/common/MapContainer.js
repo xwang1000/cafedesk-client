@@ -62,8 +62,6 @@ const Container = props => {
   for (let i = 0; i < points.length; i++) {
     bounds.extend(points[i]);
   }
-  console.log('bounds: ', bounds)
-  console.log('points: ', points)
 
   return (
     <div style={style} >
@@ -73,7 +71,7 @@ const Container = props => {
         center={getFormattedCoordinates(props.mapPosition)}
         defaultCenter={currentUserLocation}
         initialCenter={currentUserLocation}
-        bounds={bounds}
+        { ...(props.markerPositions.length === 0 ? {zoom: 14} : {bounds: bounds})}
       >
         {markers}
         {userMarker(props.google)}
