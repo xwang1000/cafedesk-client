@@ -9,7 +9,7 @@ module.exports = {
   getViewedBusinessesByUserId(id) {
     return new Promise((res, rej) => {
       cafedeskAPI
-        .get(`/users/${id}/favourites`)
+        .get(`/users/${id}/views`)
         .then(response => {
           res(response.data)
         })
