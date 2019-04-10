@@ -15,6 +15,7 @@ const HomePage = (props) => {
   const resetMap = () => {
     console.log('resetting map: ', businessMarkers)
     setMarkerPositions(businessMarkers)
+
   }
 
   // Take the business coords and set the marker positions
@@ -48,6 +49,7 @@ const HomePage = (props) => {
           />)}
       />
     </div>
+
   )
 }
 
