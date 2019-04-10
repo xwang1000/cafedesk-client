@@ -38,8 +38,9 @@ function App() {
   }
 
   const changeUserTags = tags => {
-    console.log('change user tags: ', tags)
     setUserTags(tags)
+    localStorage.setItem('userTags', JSON.stringify(tags))
+    console.log(localStorage)
   }
 
   useEffect(() => {
@@ -49,7 +50,6 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-
         <Switch>
           <Route path='/feed' 
             render={(props) => <HomePage {...props} 

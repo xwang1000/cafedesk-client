@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import BusinessRow from './BusinessRow'
 import { getBusinesses, getFavouriteBusinessesByUserId, getViewedBusinessesByUserId } from '../../api/cafedeskAPI'
 
-const fetchBusinesses = async (setState, fetchType, setBusinessMarkers, setMarkerPositions) => {
+const fetchBusinesses = async (setState, fetchType, setBusinessMarkers, setMarkerPositions, tags) => {
   setState({loaded: false})
   
   let businesses = []
   if (fetchType === 'recommendations') {
-    businesses = await getBusinesses()
+    businesses = await getBusinesses(tags)
   }
 
   if (fetchType === 'favourite') {
@@ -35,10 +35,26 @@ const fetchBusinesses = async (setState, fetchType, setBusinessMarkers, setMarke
 const BusinessList = (props) => {
   const { fetchType } = props
   const [state, setState] = useState({loaded:false})
-  
+
+  const usePrevious = value => {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  }
+
+  const prevUserTags = usePrevious(props.user.tags)
+
   useEffect(() => {
-    fetchBusinesses(setState, fetchType, props.setBusinessMarkers, props.setMarkerPositions)
+    fetchBusinesses(setState, fetchType, props.setBusinessMarkers, props.setMarkerPositions, props.userTags)
   }, [])
+
+  useEffect(() => {
+    if (prevUserTags !== props.user.tags) {
+      fetchBusinesses(setState, fetchType, props.setBusinessMarkers, props.setMarkerPositions, props.userTags)
+    }
+  })
 
   if (state.loaded) {
     return (
@@ -55,7 +71,7 @@ const BusinessList = (props) => {
   } else {
     return (
       <div>
-        <h1>Business list loading</h1>
+        <h1>Business list loading...</h1>
       </div>
     )
   }

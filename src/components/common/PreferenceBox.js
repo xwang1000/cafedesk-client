@@ -42,7 +42,6 @@ const PreferenceBox = props => {
 
   const updateTags = () => {
     const tags = allTags.filter(tag => tag.selected)
-    console.log('update tags: ', tags)
     props.changeUserTags(tags)
   }
 

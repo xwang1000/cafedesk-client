@@ -61,16 +61,37 @@ module.exports = {
   },
 
   // return recommendations
-  getBusinesses() {
+  getBusinesses(tags) {
+    const round = (value, decimals) => {
+      return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+    }
+    
+    const userCoords = JSON.parse(localStorage.getItem('userCoords'))
+
     return new Promise((res, rej) => {
       cafedeskAPI
-        .get(`/recommendations`)
+        .get(`/recommendations`, {
+          params: {
+            latitude: round(userCoords.latitude, 6),
+            longitude: round(userCoords.longitude, 6),
+            tags: JSON.stringify(tags)
+          }
+        })
         .then(response => {
           res(response.data)
         })
         .catch(error => {
           rej(error)
         })
+    })
+  },
+
+  getTags() {
+    return new Promise((res, rej) => {
+      cafedeskAPI
+        .get('/tags')
+        .then(response => res(response.data))
+        .catch(error => rej(error))
     })
   }
 }

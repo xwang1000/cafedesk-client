@@ -1,10 +1,11 @@
 .preference-box {
-  /* display: flex; */
-  /* flex-flow: row nowrap; */
   overflow-x: scroll;
   overflow-y: hidden;
-  padding: 1rem 1rem 3rem 1rem;
-  /* width: 1000px; */
-  /* align-content: space-around; */
+  padding: .5rem 1rem 3rem 1rem;
   white-space: nowrap;
+  border-bottom: 1px solid #eee;
+}
+
+::-webkit-scrollbar {
+  display: none; 
 }
