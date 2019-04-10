@@ -48,30 +48,43 @@ function App() {
   }, [])
 
   return (
-    <div>
+    <div className="app">
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" render={() => (
-              <Redirect to="/feed"/>
-          )}/>
-          <Route path='/feed' 
-            render={(props) => <HomePage {...props} 
-            user={{
-              coords: userCoords,
-              tags: userTags
-            }}
-            changeUserTags={changeUserTags}
-            />}
-          />
-          <Route path='/search' 
-            render={(props) => <SearchPage {...props} 
-            user={{
-              coords: userCoords,
-              tags: userTags
-            }} />}
-          />
-          <Route path='/fav' component={FavPage} />
-          <Route path='/profile' component={ProfilePage} />
+          <div className="pages">
+            <Route exact path="/" render={() => (
+                <Redirect to="/feed"/>
+            )}/>
+            <Route path='/feed' 
+              render={(props) => <HomePage {...props} 
+              user={{
+                coords: userCoords,
+                tags: userTags
+              }}
+              changeUserTags={changeUserTags}
+              />}
+            />
+            <Route path='/search' 
+              render={(props) => <SearchPage {...props} 
+              user={{
+                coords: userCoords,
+                tags: userTags
+              }}
+              />}
+            />
+            <Route path='/fav' 
+              render={(props) => <FavPage {...props} 
+              />}
+            />
+            <Route path='/profile' 
+              render={(props) => <ProfilePage {...props} 
+              user={{
+                coords: userCoords,
+                tags: userTags
+              }}
+              />}
+            />
+          </div>
           {/* <Route path='/search/results' component={SearchResultsContainer} /> */}
         </Switch>
         

@@ -72,6 +72,13 @@ const Container = props => {
   }
 
   bounds.extend(points[0])
+
+  const defaultMapOptions = {
+    fullscreenControl: false,
+    disableDefaultUI: true,
+    streetViewControl: false
+  };
+
   return (
     <div style={style} >
       <Map 
@@ -81,6 +88,8 @@ const Container = props => {
         initialCenter={currentUserLocation}
         bounds={bounds}
         zoom={14}
+        streetViewControl={false}
+        disableDefaultUI={true}
       >
         {markers(props.google)}
         {userMarker(props.google)}
