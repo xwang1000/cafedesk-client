@@ -3,6 +3,7 @@ import GoogleApiWrapper from '../common/MapContainer'
 import BusinessList from '../common/BusinessList'
 import BusinessContainer from '../common/BusinessContainer'
 import PreferenceBox from '../common/PreferenceBox'
+import DistanceSlider from '../ui/DistanceSlider'
 import { Route } from 'react-router-dom'
 
 const HomePage = (props) => {
@@ -25,6 +26,7 @@ const HomePage = (props) => {
     <div className="home-page">
       <GoogleApiWrapper markerPositions={markerPositions} />
       <PreferenceBox changeUserTags={props.changeUserTags} />
+      <DistanceSlider />
       <Route
         path={props.match.path} 
         render={(props) => (
