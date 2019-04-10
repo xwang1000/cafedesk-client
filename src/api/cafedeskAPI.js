@@ -78,9 +78,11 @@ module.exports = {
           }
         })
         .then(response => {
+          console.log(response)
           res(response.data)
         })
         .catch(error => {
+          console.log(error)
           rej(error)
         })
     })

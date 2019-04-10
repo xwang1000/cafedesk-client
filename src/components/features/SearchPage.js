@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import GoogleApiWrapper from '../common/MapContainer'
 import { getAsset } from '../../utils'
 

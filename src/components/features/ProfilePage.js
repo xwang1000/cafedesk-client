@@ -1,10 +1,10 @@
-import React from 'react'
+import React  from 'react'
 import BusinessList from '../common/BusinessList'
 import BusinessContainer from '../common/BusinessContainer'
 import { Route } from 'react-router-dom'
 
 const ProfilePage = (props) => {
-
+  
   return (
       <div className="profile-history">
         <h1 className="profile-history-head">History</h1>

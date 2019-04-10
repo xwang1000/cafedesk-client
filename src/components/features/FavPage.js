@@ -4,6 +4,7 @@ import BusinessList from '../common/BusinessList'
 import BusinessContainer from '../common/BusinessContainer'
 
 const FavPage = props => {
+
   return (
     <div className="fav-page">
       <h1>My Favourites </h1>

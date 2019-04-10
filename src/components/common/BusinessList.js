@@ -86,7 +86,7 @@ const BusinessList = (props) => {
     )
   } else {
     return (
-      <div class="business-list-loading">
+      <div className="business-list-loading">
         <img src={getAsset('loading.svg')} alt="a loading donut" />
       </div>
     )
