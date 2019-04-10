@@ -27,7 +27,6 @@ const HomePage = (props) => {
     <div className="home-page">
       <GoogleApiWrapper markerPositions={markerPositions} />
       <PreferenceBox changeUserTags={props.changeUserTags} />
-      <DistanceSlider />
       <Route
         path={props.match.path} 
         render={(props) => (
