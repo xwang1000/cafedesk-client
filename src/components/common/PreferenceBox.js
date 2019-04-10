@@ -6,7 +6,7 @@ import { getTags } from '../../api/cafedeskAPI'
 const allTagsData = []
 getTags()
   .then(tags => {
-    tags.forEach((tag, i) => {
+    tags.sort().forEach((tag, i) => {
       allTagsData.push({ name: tag, selected: i < 3 ? true : false })
     })
   })
