@@ -88,7 +88,8 @@ const Container = props => {
         initialCenter={currentUserLocation}
         bounds={bounds}
         zoom={14}
-        defaultOptions={defaultMapOptions}
+        streetViewControl={false}
+        disableDefaultUI={true}
       >
         {markers(props.google)}
         {userMarker(props.google)}
