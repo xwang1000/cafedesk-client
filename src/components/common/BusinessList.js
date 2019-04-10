@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import BusinessRow from './BusinessRow'
 import { getAsset } from '../../utils'
-import { getBusinesses, getFavouriteBusinessesByUserId, getViewedBusinessesByUserId } from '../../api/cafedeskAPI'
+import { getBusinesses, getFavouriteBusinessesByUserId, getViewedBusinessesByUserId, getBusinessByKeyword } from '../../api/cafedeskAPI'
 
 const removeDups = businesses => {
   let uniqueIds = []
@@ -17,7 +17,7 @@ const removeDups = businesses => {
   return uniqueBusinesses;
 }
 
-const fetchBusinesses = async (setState, fetchType, setBusinessMarkers, setMarkerPositions, tags) => {
+const fetchBusinesses = async (setState, fetchType, setBusinessMarkers, setMarkerPositions, tags, keyword) => {
   setState({ loaded: false })
 
   let businesses = []
@@ -31,6 +31,10 @@ const fetchBusinesses = async (setState, fetchType, setBusinessMarkers, setMarke
 
   if (fetchType === 'history') {
     businesses = await getViewedBusinessesByUserId(1)
+  }
+
+  if (fetchType === 'search') {
+    businesses = await getBusinessByKeyword(keyword)
   }
 
   const newState = {
@@ -61,7 +65,7 @@ const BusinessList = (props) => {
   const prevUserTags = props.user ? usePrevious(props.user.tags) : []
 
   useEffect(() => {
-    fetchBusinesses(setState, fetchType, props.setBusinessMarkers, props.setMarkerPositions, props.userTags)
+    fetchBusinesses(setState, fetchType, props.setBusinessMarkers, props.setMarkerPositions, props.userTags, props.keyword)
   }, [])
 
   useEffect(() => {
