@@ -65,10 +65,8 @@ const BusinessList = (props) => {
   }, [])
 
   useEffect(() => {
-    if (props.user) {
-      if (prevUserTags !== props.user.tags) {
-        fetchBusinesses(setState, fetchType, props.setBusinessMarkers, props.setMarkerPositions, props.user.tags)
-      }
+    if (props.user && prevUserTags !== props.user.tags) {
+      fetchBusinesses(setState, fetchType, props.setBusinessMarkers, props.setMarkerPositions, props.user.tags)
     }
   })
 
