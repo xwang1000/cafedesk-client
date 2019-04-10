@@ -1,9 +1,10 @@
 import React from 'react'
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react'
-import { generateRandomId } from '../../utils'
+import { generateRandomId, getAsset } from '../../utils'
 
 const GOOGLE_API_KEY = 'AIzaSyBitC0nYuPGlErcsECDQl9lvBkEsw_9k1s'
-const USER_ICON_URL = "https://www.freeiconspng.com/uploads/cute-icon-png-20.png"
+const STORE_ICON_URL = getAsset('store-icon.svg')
+const USER_ICON_URL = getAsset('user-icon.svg')
 
 const hasPosition = coordinate => {
   if (coordinate === undefined) {
@@ -31,14 +32,22 @@ const Container = props => {
     boxShadow: '0px 19px 36px -11px rgba(0,0,0,0.1)',
   }
 
-  const markers = props.markerPositions.filter(hasPosition).map(markerPosition => 
-    <Marker 
-      key={generateRandomId()} 
-      position={getFormattedCoordinates(markerPosition)}
-    />
-  )
+  const markers = google => {
+    
+    return props.markerPositions.filter(hasPosition).map(markerPosition => 
+      <Marker 
+        key={generateRandomId()} 
+        position={getFormattedCoordinates(markerPosition)}
+        icon={{
+          url: STORE_ICON_URL,
+          anchor: new google.maps.Point(32,32),
+          scaledSize: new google.maps.Size(50,55)
+        }}
+      />
+    )
+  } 
 
-  const userMarker = (google) => 
+  const userMarker = google => 
     <Marker 
       name="your position" 
       position={currentUserLocation} 
@@ -73,7 +82,7 @@ const Container = props => {
         bounds={bounds}
         zoom={14}
       >
-        {markers}
+        {markers(props.google)}
         {userMarker(props.google)}
       </Map>
     </div>
