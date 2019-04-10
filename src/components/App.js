@@ -51,6 +51,9 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
+          <Route exact path="/" render={() => (
+              <Redirect to="/feed"/>
+          )}/>
           <Route path='/feed' 
             render={(props) => <HomePage {...props} 
             user={{
