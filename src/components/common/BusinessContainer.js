@@ -8,13 +8,13 @@ const goBack = () => {
 }
 
 const renderBusinessContainer = (props) => {
-  const {image_url, name, distance, is_closed, tags} = props.business
-  const distanceInKm = Math.floor(distance / 10) / 100
+  const { image_url, name, distance, is_closed, tags } = props.business
+  const distanceInKm = Math.floor(distance / 10) / 100000
 
   return (
     <div>
       <div className="business-container">
-      <h1 onClick={goBack}>Go Back</h1>
+        <h1 onClick={goBack}>Go Back</h1>
         <div className="business-container-row1">
           <div className="business-container-col1">
             <img className="business-container-pic" src={image_url} alt={name}></img>
@@ -45,8 +45,8 @@ const renderBusinessContainerLoading = () => {
 }
 
 const fetchBusinessById = async (setState, id, showOnMap) => {
-  setState({isLoaded: false})
-  
+  setState({ isLoaded: false })
+
   const business = await getBusinessById(id)
   business.isLoaded = true
 
@@ -58,19 +58,19 @@ const fetchBusinessById = async (setState, id, showOnMap) => {
 }
 
 const BusinessContainer = (props) => {
-  const [business, setBusiness] = useState({isLoaded: false})
+  const [business, setBusiness] = useState({ isLoaded: false })
   useEffect(() => {
     fetchBusinessById(setBusiness, props.match.params.businessId, props.showOnMap)
-    
+
     if (props.resetMap) {
-      return(() => props.resetMap())
+      return (() => props.resetMap())
     }
   }, {})
 
   if (business.isLoaded) {
-    return renderBusinessContainer({business})
+    return renderBusinessContainer({ business })
   }
-  
+
   else {
     return renderBusinessContainerLoading()
   }
