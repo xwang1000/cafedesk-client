@@ -9,7 +9,7 @@ const BusinessRow = props => {
     <div>
         <div className="business-row">
             <div className="business-row-col1">
-              <img className="business-row-image" src={business.image_url}></img>
+              <img className="business-row-image" src={business.image_url} alt={business.name}></img>
             </div>
 
             <div className="business-row-col2">

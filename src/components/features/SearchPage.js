@@ -4,7 +4,6 @@ import { getAsset } from '../../utils'
 
 const SearchPage = (props) => {
   let { user } = props
-  console.log('searchPage props: ', user)
 
   if (user.coords === undefined) {
     return (

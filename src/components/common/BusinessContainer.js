@@ -39,7 +39,7 @@ const renderBusinessContainerLoading = () => {
   return (
     <div className="business-container float-up loading">
       <h1 onClick={goBack}>Go Back</h1>
-      <img className="business-container-loading-img" src={getAsset('coffee-cup.svg')} />
+      <img className="business-container-loading-img" src={getAsset('coffee-cup.svg')} alt="loading iamge" />
     </div>
   )
 }

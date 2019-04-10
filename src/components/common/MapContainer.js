@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react'
-import { getAsset, generateRandomId } from '../../utils'
+import React from 'react'
+import {Map, Marker, GoogleApiWrapper} from 'google-maps-react'
+import { generateRandomId } from '../../utils'
 
 import secrets from '../../secrets'
 
@@ -9,7 +9,6 @@ const USER_ICON_URL = "https://www.freeiconspng.com/uploads/cute-icon-png-20.png
 
 const hasPosition = coordinate => {
   if (coordinate === undefined) {
-    console.log('coordinate is undefined')
     return false
   }
   return coordinate.latitude !== undefined && coordinate.longitude !== undefined
@@ -58,10 +57,15 @@ const Container = props => {
   ]
 
   const bounds = new props.google.maps.LatLngBounds();
-  for (let i = 0; i < points.length; i++) {
-    bounds.extend(points[i]);
+  if (points.length > 1) {
+    for (let i = 0; i < points.length; i++) {
+      bounds.extend(points[i]);
+    }
+  } else {
+
   }
 
+  bounds.extend(points[0])
   return (
     <div style={style} >
       <Map 
@@ -69,7 +73,7 @@ const Container = props => {
         google={props.google}
         defaultCenter={currentUserLocation}
         initialCenter={currentUserLocation}
-        { ...(props.markerPositions.length === 0 ? {zoom: 14} : {bounds: bounds})}
+        { ...(points.length <= 1 ? {zoom: 12} : {bounds: bounds})}
       >
         {markers}
         {userMarker(props.google)}

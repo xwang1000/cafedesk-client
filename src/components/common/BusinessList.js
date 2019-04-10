@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import BusinessRow from './BusinessRow'
 import { getBusinesses, getFavouriteBusinessesByUserId, getViewedBusinessesByUserId } from '../../api/cafedeskAPI'
 
-const fetchBusinesses = async (setState, fetchType, setBusinessMarkers) => {
+const fetchBusinesses = async (setState, fetchType, setBusinessMarkers, setMarkerPositions) => {
   setState({loaded: false})
   
   let businesses = []
@@ -28,6 +28,7 @@ const fetchBusinesses = async (setState, fetchType, setBusinessMarkers) => {
   if (setBusinessMarkers) {
     const markers = businesses.map(business => business.coordinates)
     setBusinessMarkers(markers)
+    setMarkerPositions(markers)
   }
 }
 
@@ -36,15 +37,14 @@ const BusinessList = (props) => {
   const [state, setState] = useState({loaded:false})
   
   useEffect(() => {
-    fetchBusinesses(setState, fetchType, props.setBusinessMarkers)
+    fetchBusinesses(setState, fetchType, props.setBusinessMarkers, props.setMarkerPositions)
   }, [])
 
-  console.log('business list states: ', state)
   if (state.loaded) {
     return (
       <div className="business-list">
         {state.businesses.map(business => (
-          <Link to={`${props.match.path}/${business.id}`}>
+          <Link to={`${props.match.path}/${business.id}`} key={business.id}>
             <BusinessRow key={business.id} business={business} showMap={props.cardShowMap} />
           </Link>
         )

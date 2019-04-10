@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import GoogleApiWrapper from '../common/MapContainer'
 import BusinessList from '../common/BusinessList'
 import BusinessContainer from '../common/BusinessContainer'
@@ -6,20 +6,15 @@ import PreferenceBox from '../common/PreferenceBox'
 import { Route } from 'react-router-dom'
 
 const HomePage = (props) => {
-
+  
   const [markerPositions, setMarkerPositions] = useState([])
   const [businessMarkers, setBusinessMarkers] = useState([])
-
+  
+  console.log('home page marker positions:', markerPositions)
+  console.log('home page business markers: ', businessMarkers)
   // Reset marker positions to the businesses
   const resetMap = () => {
-    // const markers = businesses.map(business => {
-    //   if (business.coordinates) {
-    //     return business.coordinates
-    //   } 
-    //   return {}
-    // })
-    // setMarkerPositions(markers)
-    console.log('reset map: ', businessMarkers)
+    console.log('resetting map: ', businessMarkers)
     setMarkerPositions(businessMarkers)
   }
 
@@ -42,11 +37,12 @@ const HomePage = (props) => {
             {...props}
             fetchType="recommendations"
             setBusinessMarkers={setBusinessMarkers}
+            setMarkerPositions={setMarkerPositions}
           />
         )}
       />
       <Route
-        path={`${props.match.path}/:businessId`}
+        exact path={`${props.match.path}/:businessId`}
         render={(props) => 
           (<BusinessContainer 
             {...props} 
@@ -54,6 +50,7 @@ const HomePage = (props) => {
             showOnMap={showOnMap}
           />)}
       />
+      <Route path="preference" component={PreferenceBox} />
     </div>
   )
 }
