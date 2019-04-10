@@ -44,19 +44,27 @@ const renderBusinessContainerLoading = () => {
   )
 }
 
-const fetchBusinessById = async (setState, id) => {
+const fetchBusinessById = async (setState, id, showOnMap) => {
   setState({isLoaded: false})
   
   const business = await getBusinessById(id)
   business.isLoaded = true
 
   setState(business)
+
+  if (showOnMap) {
+    showOnMap(business.coordinates)
+  }
 }
 
 const BusinessContainer = (props) => {
   const [business, setBusiness] = useState({isLoaded: false})
   useEffect(() => {
-    fetchBusinessById(setBusiness, props.match.params.businessId)
+    fetchBusinessById(setBusiness, props.match.params.businessId, props.showOnMap)
+    
+    if (props.resetMap) {
+      return(() => props.resetMap())
+    }
   }, {})
 
   if (business.isLoaded) {

@@ -8,7 +8,7 @@ const FavPage = props => {
     <div className="fav-page">
       <h1>My Favourites </h1>
       <Route
-        path={props.match.path} 
+        exact path={props.match.path} 
         render={(props) => (
           <BusinessList
             {...props}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import BusinessRow from './BusinessRow'
 import { getBusinesses, getFavouriteBusinessesByUserId, getViewedBusinessesByUserId } from '../../api/cafedeskAPI'
 
-const fetchBusinesses = async (setState, fetchType) => {
+const fetchBusinesses = async (setState, fetchType, setBusinessMarkers) => {
   setState({loaded: false})
   
   let businesses = []
@@ -24,6 +24,11 @@ const fetchBusinesses = async (setState, fetchType) => {
     businesses: businesses
   }
   setState(newState)
+
+  if (setBusinessMarkers) {
+    const markers = businesses.map(business => business.coordinates)
+    setBusinessMarkers(markers)
+  }
 }
 
 const BusinessList = (props) => {
@@ -31,7 +36,7 @@ const BusinessList = (props) => {
   const [state, setState] = useState({loaded:false})
   
   useEffect(() => {
-    fetchBusinesses(setState, fetchType)
+    fetchBusinesses(setState, fetchType, props.setBusinessMarkers)
   }, [])
 
   console.log('business list states: ', state)

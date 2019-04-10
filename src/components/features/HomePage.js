@@ -7,23 +7,30 @@ import { Route } from 'react-router-dom'
 
 const HomePage = (props) => {
 
-  const [businesses, setBusinesses] = useState([])
-  const [mapPosition, setMapPosition] = useState(props.user.coords || {})
   const [markerPositions, setMarkerPositions] = useState([])
+  const [businessMarkers, setBusinessMarkers] = useState([])
 
+  // Reset marker positions to the businesses
   const resetMap = () => {
-    const markers = businesses.map(business => {
-      if (business.coordinates) {
-        return business.coordinates
-      } 
-      return {}
-    })
-    setMarkerPositions(markers)
+    // const markers = businesses.map(business => {
+    //   if (business.coordinates) {
+    //     return business.coordinates
+    //   } 
+    //   return {}
+    // })
+    // setMarkerPositions(markers)
+    console.log('reset map: ', businessMarkers)
+    setMarkerPositions(businessMarkers)
+  }
+
+  // Take the business coords and set the marker positions
+  const showOnMap = (coords) => {
+    setMarkerPositions([coords])
   }
 
   return (
     <div className="home-page">
-      <GoogleApiWrapper mapPosition={mapPosition || props.user.coords} markerPositions={markerPositions} />
+      <GoogleApiWrapper markerPositions={markerPositions} />
       {/* {
         props.user.tags.length === 0 && 
         <PreferenceBox changeUserTags={props.changeUserTags} userTags={props.user.tags} resetMap={resetMap} /> :
@@ -34,6 +41,7 @@ const HomePage = (props) => {
           <BusinessList
             {...props}
             fetchType="recommendations"
+            setBusinessMarkers={setBusinessMarkers}
           />
         )}
       />
@@ -42,7 +50,8 @@ const HomePage = (props) => {
         render={(props) => 
           (<BusinessContainer 
             {...props} 
-            resetMap={resetMap} 
+            resetMap={resetMap}
+            showOnMap={showOnMap}
           />)}
       />
     </div>

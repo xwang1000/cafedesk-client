@@ -18,7 +18,6 @@ const hasPosition = coordinate => {
 const LoadingContainer = () => (<div className="map-loading"></div>)
 
 const Container = props => {
-  console.log('map props: ', props)
   const getFormattedCoordinates = coordinates => {
     return {
       lat: coordinates.latitude,
@@ -68,7 +67,6 @@ const Container = props => {
       <Map 
         className="google-map-container" 
         google={props.google}
-        center={getFormattedCoordinates(props.mapPosition)}
         defaultCenter={currentUserLocation}
         initialCenter={currentUserLocation}
         { ...(props.markerPositions.length === 0 ? {zoom: 14} : {bounds: bounds})}
