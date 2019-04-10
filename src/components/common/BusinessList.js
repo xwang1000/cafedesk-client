@@ -9,7 +9,7 @@ const removeDups = businesses => {
   let uniqueBusinesses = []
 
   businesses.forEach(business => {
-    if(!uniqueIds[business.id]) {
+    if (!uniqueIds[business.id]) {
       uniqueIds[business.id] = true
       uniqueBusinesses.push(business)
     }
@@ -18,8 +18,8 @@ const removeDups = businesses => {
 }
 
 const fetchBusinesses = async (setState, fetchType, setBusinessMarkers, setMarkerPositions, tags) => {
-  setState({loaded: false})
-  
+  setState({ loaded: false })
+
   let businesses = []
   if (fetchType === 'recommendations') {
     businesses = await getBusinesses(tags)
@@ -48,7 +48,7 @@ const fetchBusinesses = async (setState, fetchType, setBusinessMarkers, setMarke
 
 const BusinessList = (props) => {
   const { fetchType } = props
-  const [state, setState] = useState({loaded:false})
+  const [state, setState] = useState({ loaded: false })
 
   const usePrevious = value => {
     const ref = useRef();
@@ -65,11 +65,9 @@ const BusinessList = (props) => {
   }, [])
 
   useEffect(() => {
-    if (props.user) {
-      if (prevUserTags !== props.user.tags) {
-        fetchBusinesses(setState, fetchType, props.setBusinessMarkers, props.setMarkerPositions, props.userTags)
-      }
-    } 
+    if (props.user && prevUserTags !== props.user.tags) {
+      fetchBusinesses(setState, fetchType, props.setBusinessMarkers, props.setMarkerPositions, props.user.tags)
+    }
   })
 
   if (state.loaded) {
@@ -80,7 +78,7 @@ const BusinessList = (props) => {
             <BusinessRow key={business.id} business={business} showMap={props.cardShowMap} />
           </Link>
         )
-        
+
         )}
       </div>
     )
