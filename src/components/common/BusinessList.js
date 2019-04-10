@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import BusinessRow from './BusinessRow'
+import { getAsset } from '../../utils'
 import { getBusinesses, getFavouriteBusinessesByUserId, getViewedBusinessesByUserId } from '../../api/cafedeskAPI'
 
 const removeDups = businesses => {
@@ -85,8 +86,8 @@ const BusinessList = (props) => {
     )
   } else {
     return (
-      <div>
-        <h1>Business list loading...</h1>
+      <div class="business-list-loading">
+        <img src={getAsset('loading.svg')} alt="a loading donut" />
       </div>
     )
   }
