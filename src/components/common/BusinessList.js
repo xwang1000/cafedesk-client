@@ -3,6 +3,19 @@ import { Link } from 'react-router-dom'
 import BusinessRow from './BusinessRow'
 import { getBusinesses, getFavouriteBusinessesByUserId, getViewedBusinessesByUserId } from '../../api/cafedeskAPI'
 
+const removeDups = businesses => {
+  let uniqueIds = []
+  let uniqueBusinesses = []
+
+  businesses.forEach(business => {
+    if(!uniqueIds[business.id]) {
+      uniqueIds[business.id] = true
+      uniqueBusinesses.push(business)
+    }
+  })
+  return uniqueBusinesses;
+}
+
 const fetchBusinesses = async (setState, fetchType, setBusinessMarkers, setMarkerPositions, tags) => {
   setState({loaded: false})
   
@@ -21,7 +34,7 @@ const fetchBusinesses = async (setState, fetchType, setBusinessMarkers, setMarke
 
   const newState = {
     loaded: true,
-    businesses: businesses
+    businesses: removeDups(businesses)
   }
   setState(newState)
 

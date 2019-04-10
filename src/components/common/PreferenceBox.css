@@ -4,6 +4,7 @@
   padding: .5rem 1rem 3rem 1rem;
   white-space: nowrap;
   border-bottom: 1px solid #eee;
+  -webkit-overflow-scrolling: touch;
 }
 
 ::-webkit-scrollbar {
