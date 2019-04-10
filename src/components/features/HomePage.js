@@ -6,7 +6,6 @@ import PreferenceBox from '../common/PreferenceBox'
 import { Route } from 'react-router-dom'
 
 const HomePage = (props) => {
-  console.log('homepage user: ', props.user)
   const [markerPositions, setMarkerPositions] = useState([])
   const [businessMarkers, setBusinessMarkers] = useState([])
   

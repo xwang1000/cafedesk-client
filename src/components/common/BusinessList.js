@@ -44,16 +44,18 @@ const BusinessList = (props) => {
     return ref.current;
   }
 
-  const prevUserTags = usePrevious(props.user.tags)
+  const prevUserTags = props.user ? usePrevious(props.user.tags) : []
 
   useEffect(() => {
     fetchBusinesses(setState, fetchType, props.setBusinessMarkers, props.setMarkerPositions, props.userTags)
   }, [])
 
   useEffect(() => {
-    if (prevUserTags !== props.user.tags) {
-      fetchBusinesses(setState, fetchType, props.setBusinessMarkers, props.setMarkerPositions, props.userTags)
-    }
+    if (props.user) {
+      if (prevUserTags !== props.user.tags) {
+        fetchBusinesses(setState, fetchType, props.setBusinessMarkers, props.setMarkerPositions, props.userTags)
+      }
+    } 
   })
 
   if (state.loaded) {
