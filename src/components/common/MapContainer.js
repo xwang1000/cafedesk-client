@@ -2,9 +2,7 @@ import React from 'react'
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react'
 import { generateRandomId } from '../../utils'
 
-import secrets from '../../secrets'
-
-const {GOOGLE_API_KEY} = secrets
+const GOOGLE_API_KEY = 'AIzaSyBitC0nYuPGlErcsECDQl9lvBkEsw_9k1s'
 const USER_ICON_URL = "https://www.freeiconspng.com/uploads/cute-icon-png-20.png"
 
 const hasPosition = coordinate => {
