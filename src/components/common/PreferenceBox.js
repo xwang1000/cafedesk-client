@@ -1,36 +1,48 @@
 import React, { useState, useEffect} from 'react'
 import { InteractiveTag } from './Tag'
+import './PreferenceBox.css'
 
-// This component acts as a form
-// props:
-// @showGreeting: boolean
-// @showPrompt: boolean
-// @userTags: array
-// @totalTags: array
-// @setUserTags: method
-
-const allTagsData = 
-  ['quiet', 'free wifi', 'jazzy', 
-    'laptop-friendly', 'fast wifi', 
-    'matcha', 'good tea', 'bakery', 'breakfast food', 'big tables']
+const allTagsData = [
+  {
+    name: 'quiet',
+    selected: false
+  },
+  {
+    name: 'good tea',
+    selected: true
+  },
+  {
+    name: 'fast wifi',
+    selected: true
+  },
+  {
+    name: 'laptop-friendly',
+    selected: true
+  },
+  {
+    name: 'jazzy',
+    selected: false
+  },
+  {
+    name: 'free wifi',
+    selected: false
+  },
+  {
+    name: 'bakery',
+    selected: false
+  }
+]
 
 const PreferenceBox = props => {
   const [allTags, setAllTags] = useState([])
 
   useEffect(() => {
-    const tags = allTagsData.map(tag => {
-      return {
-        name: tag,
-        selected: false
-      }
-    })
-
-    setAllTags(tags)
-    return (() => props.resetMap())
+    setAllTags(allTagsData)
   }, {})
 
   const updateTags = () => {
     const tags = allTags.filter(tag => tag.selected)
+    console.log('update tags: ', tags)
     props.changeUserTags(tags)
   }
 
@@ -49,16 +61,12 @@ const PreferenceBox = props => {
   }
 
   const tags = allTags.map(tag => [
-    <InteractiveTag key={tag.name} name={tag.name} toggleTag={toggleTag} selected={tag.selected} />
+    <InteractiveTag key={tag.name} name={tag.name} toggleTag={toggleTag} selected={tag.selected} updateTags={updateTags} />
   ])
 
   return (
-    <div>
-      <h1>What kind of coffee shops are you looking for?</h1>
+    <div className="preference-box">
       {tags}
-      <button onClick={updateTags}>
-        show me some coffee shops
-      </button>
     </div>
   )
 }

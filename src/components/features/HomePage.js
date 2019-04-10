@@ -10,8 +10,6 @@ const HomePage = (props) => {
   const [markerPositions, setMarkerPositions] = useState([])
   const [businessMarkers, setBusinessMarkers] = useState([])
   
-  console.log('home page marker positions:', markerPositions)
-  console.log('home page business markers: ', businessMarkers)
   // Reset marker positions to the businesses
   const resetMap = () => {
     console.log('resetting map: ', businessMarkers)
@@ -26,10 +24,7 @@ const HomePage = (props) => {
   return (
     <div className="home-page">
       <GoogleApiWrapper markerPositions={markerPositions} />
-      {/* {
-        props.user.tags.length === 0 && 
-        <PreferenceBox changeUserTags={props.changeUserTags} userTags={props.user.tags} resetMap={resetMap} /> :
-      } */}
+      <PreferenceBox changeUserTags={props.changeUserTags} />
       <Route
         path={props.match.path} 
         render={(props) => (
@@ -50,7 +45,6 @@ const HomePage = (props) => {
             showOnMap={showOnMap}
           />)}
       />
-      <Route path="preference" component={PreferenceBox} />
     </div>
   )
 }

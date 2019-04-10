@@ -10,7 +10,10 @@ const Tag = props => {
 
 export const InteractiveTag = props => {
 
-  const onClick = name => props.toggleTag(name)
+  const onClick = name => {
+    props.toggleTag(name)
+    props.updateTags()
+  }
 
   return (
     <span 

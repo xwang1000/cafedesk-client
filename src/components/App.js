@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 import './App.css'
 import HomePage from './features/HomePage'
@@ -7,12 +7,19 @@ import SearchPage from './features/SearchPage'
 import FavPage from './features/FavPage'
 import ProfilePage from './features/ProfilePage'
 // import SearchResultsContainer from './features/SearchResultsContainer'
+import PreferenceBox from './common/PreferenceBox'
 import NavBar from './features/NavBar'
 
 const fetchUserCoords = async (setUserCoords) => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(setUserCoords)
   } 
+}
+
+const renderRedirect = (userTags) => {
+  if (userTags.length === 0) {
+    return <Redirect to='/preference' />
+  }
 }
 
 function App() {
@@ -41,8 +48,8 @@ function App() {
 
   return (
     <div>
-      
       <BrowserRouter>
+
         <Switch>
           <Route path='/feed' 
             render={(props) => <HomePage {...props} 

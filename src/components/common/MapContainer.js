@@ -62,7 +62,6 @@ const Container = props => {
       bounds.extend(points[i]);
     }
   } else {
-
   }
 
   bounds.extend(points[0])
@@ -73,7 +72,8 @@ const Container = props => {
         google={props.google}
         defaultCenter={currentUserLocation}
         initialCenter={currentUserLocation}
-        { ...(points.length <= 1 ? {zoom: 12} : {bounds: bounds})}
+        bounds={bounds}
+        zoom={14}
       >
         {markers}
         {userMarker(props.google)}
