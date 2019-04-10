@@ -21,8 +21,8 @@ const renderBusinessContainer = (props) => {
           </div>
           <div className="business-container-col2">
             <h2>{name}</h2>
-            <p>{is_closed !== undefined ? (is_closed ? 'closed' : 'open') : ''}</p>
-            <p>{distanceInKm ? distanceInKm + ' kms away' : ''}</p>
+            <p>{is_closed !== undefined ? (is_closed ? 'Closed Now' : 'Open Now') : ''}</p>
+            <p>{distanceInKm ? distanceInKm + ' km away' : ''}</p>
           </div>
 
         </div>
