@@ -3,8 +3,16 @@ import { Route } from 'react-router-dom'
 import GoogleApiWrapper from '../common/MapContainer'
 import BusinessList from '../common/BusinessList'
 import BusinessContainer from '../common/BusinessContainer'
+import { getAsset } from '../../utils'
+const renderWaiting = () => {
+  return (
+    <div className="search-page-waiting">
+      <img className="search-page-waiting-location" src={getAsset('store-icon.svg')} />
+      <img className="search-page-waiting-scan" src={getAsset('scan.svg')} />
+    </div>
+  )
+}
 
-const renderWaiting = () => <div><h1>waiting for input</h1></div>
 const SearchPage = props => {
   const [markerPositions, setMarkerPositions] = useState([])
   const [businessMarkers, setBusinessMarkers] = useState([])

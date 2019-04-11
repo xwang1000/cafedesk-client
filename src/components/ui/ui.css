@@ -29,3 +29,19 @@
 .business-container .fav-icon {
   float: right;
 }
+
+.back-button {
+  width: 20px;
+  margin: 10px;
+  margin-left: 0;
+  opacity: .4;
+}
+
+.back-button:hover {
+  cursor: pointer;
+}
+
+.back-button:active {
+  transform: scale(.9);
+  opacity: .5;
+}

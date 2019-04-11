@@ -42,7 +42,7 @@ h1 {
 
 .nav-item--active {
   opacity: 1;
-  transform: scale(1.4)
+  transform: scale(1.2)
 }
 
 .business-list {
@@ -114,14 +114,66 @@ h1 {
 .search-bar {
   z-index: 1;
   background-color: white;
-  border: 1px solid #eee;
-  color: grey;
+  border: 3px solid var(--main-color);
+  border-radius: 5px;
+  color: var(--main-color);
   display: block;
   font-size: 1.8rem;
-  width: 100%;
-  padding: 1rem;
+  width: 80%;
+  padding: 1.5rem 1rem;
+  margin: 2rem;
 }
 
 .search-bar:focus {
   outline: none;
+}
+
+.search-page-waiting img {
+  display: block;
+}
+
+.search-page-waiting {
+  text-align: center;
+  padding: 20% 0;
+}
+
+.search-page-waiting-location {
+  margin: 0 auto;
+  width: 60px;
+  z-index: 1;
+  opacity: .7;
+}
+
+.search-page-waiting-scan {
+  margin: 0 auto;
+  width: 180px;
+  position: relative;
+  top: -90px;
+  left: 25px;
+  z-index: 2;
+
+  -webkit-animation: myOrbit 2s linear infinite; /* Chrome, Safari 5 */
+     -moz-animation: myOrbit 2s linear infinite; /* Firefox 5-15 */
+       -o-animation: myOrbit 2s linear infinite; /* Opera 12+ */
+          animation: myOrbit 2s linear infinite; 
+}
+
+@-webkit-keyframes myOrbit {
+  from { -webkit-transform: rotate(0deg) translateX(10px) rotate(0deg); }
+  to   { -webkit-transform: rotate(360deg) translateX(10px) rotate(-360deg); }
+}
+
+@-moz-keyframes myOrbit {
+  from { -moz-transform: rotate(0deg) translateX(10px) rotate(0deg); }
+  to   { -moz-transform: rotate(360deg) translateX(10px) rotate(-360deg); }
+}
+
+@-o-keyframes myOrbit {
+  from { -o-transform: rotate(0deg) translateX(10px) rotate(0deg); }
+  to   { -o-transform: rotate(360deg) translateX(10px) rotate(-360deg); }
+}
+
+@keyframes myOrbit {
+  from { transform: rotate(0deg) translateX(10px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(10px) rotate(-360deg); }
 }

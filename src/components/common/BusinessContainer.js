@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { getBusinessById } from '../../api/cafedeskAPI'
 import TagList from '../common/TagList'
+import BackButton from '../ui/BackButton'
 import { getAsset } from '../../utils'
-
-const goBack = () => window.history.back()
 
 const renderBusinessContainer = (props) => {
   const { image_url, name, distance, is_closed, tags, is_favourite, id } = props.business
@@ -12,7 +11,7 @@ const renderBusinessContainer = (props) => {
   return (
     <div>
       <div className="business-container">
-        <h1 className="business-container-back" onClick={goBack}>Go Back</h1>
+        <BackButton />
         <div className="business-container-row1">
           <div className="business-container-col1">
             <img className="business-container-pic" src={image_url} alt={name}></img>
@@ -36,7 +35,7 @@ const renderBusinessContainer = (props) => {
 const renderBusinessContainerLoading = () => {
   return (
     <div className="business-container float-up loading">
-      <h1 onClick={goBack}>Go Back</h1>
+      <div className="back-button-wrapper"><BackButton /></div>
       <img className="business-container-loading-img" src={getAsset('coffee-cup.svg')} alt="loading iamge" />
     </div>
   )
