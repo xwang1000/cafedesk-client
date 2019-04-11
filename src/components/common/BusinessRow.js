@@ -1,5 +1,5 @@
 import React from 'react'
-
+import FavIcon from '../ui/FavIcon'
 import TagList from './TagList'
 import './Business.css'
 
@@ -12,6 +12,11 @@ const BusinessRow = props => {
     return null
   }
 
+  const favouriteClicked = () => {
+    console.log('clicked fav!')
+  }
+
+  console.log('business is fav: ', business.is_favourite)
   return (
     <div>
       <div className="business-row">
@@ -21,6 +26,7 @@ const BusinessRow = props => {
 
         <div className="business-row-col2">
           <p className="business-row-name">{business.name}</p>
+          <FavIcon isFav={business.is_favourite} favouriteClicked={favouriteClicked}/>
           <p className="business-row-close">{business.is_closed ? 'Closed' : 'Open'} Now</p>
           { distance() }
           <TagList tags={business.tags} />

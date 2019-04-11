@@ -113,5 +113,22 @@ module.exports = {
         .then(response => res(response.data))
         .catch(error => rej(error))
     })
+  },
+
+  postUserTagsBusiness(userId, tagName, businessId) {
+    cafedeskAPI
+      .post(`/${userId}/tags`, {
+        params: {
+          business_id: businessId,
+          name: tagName
+        }
+      })
+      .then(response => {
+        console.log('postUserTagsBusiness', response)
+      })
+      .catch(error => {
+        console.log(error)
+      }
+      )
   }
 }

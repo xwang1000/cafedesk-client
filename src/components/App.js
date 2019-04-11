@@ -40,7 +40,6 @@ function App() {
   const changeUserTags = tags => {
     setUserTags(tags)
     localStorage.setItem('userTags', JSON.stringify(tags))
-    console.log(localStorage)
   }
 
   useEffect(() => {
