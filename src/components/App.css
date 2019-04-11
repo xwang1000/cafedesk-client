@@ -92,16 +92,10 @@ h1 {
   font-size: 2rem;
 }
 
-.profile-header {
-  padding: 2rem;
-}
-
-.profile-header p {
-  font-size: 1.3rem;
-}
-
 .profile-history-head {
   padding-left: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 0;
 }
 
 .home-page {

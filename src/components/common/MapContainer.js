@@ -42,7 +42,7 @@ const Container = props => {
         position={getFormattedCoordinates(business.coordinates)}
         icon={{
           url: STORE_ICON_URL,
-          anchor: new google.maps.Point(32,32),
+          anchor: new google.maps.Point(30,30),
           scaledSize: new google.maps.Size(50,55)
         }}
         onClick={() => onClick(business.id)}
@@ -57,7 +57,7 @@ const Container = props => {
       icon={{
         url: USER_ICON_URL,
         anchor: new google.maps.Point(32,32),
-        scaledSize: new google.maps.Size(64,64)
+        scaledSize: new google.maps.Size(58,58)
       }}
     />
 

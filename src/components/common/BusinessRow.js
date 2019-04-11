@@ -5,11 +5,17 @@ import './Business.css'
 
 const BusinessRow = props => {
   const { business } = props
+  const address = business.location.address1
   const distance = () => {
+    let distance = ''
     if (business.distance) {
-      return <p className="business-row-distance">{ `${(business.distance / 1000).toFixed(2)} km away` }</p>
+      distance = (business.distance / 1000).toFixed(2) + 'km'
+      if (business.distance < 1000) {
+        distance = business.distance.toFixed(0) + ' m'
+      }
+      return <span className="business-row-distance">{ `${distance}` }</span>
     }
-    return null
+    return ''
   }
 
   return (
@@ -20,10 +26,12 @@ const BusinessRow = props => {
         </div>
 
         <div className="business-row-col2">
-          <p className="business-row-name">{business.name}</p>
           <FavIcon isFav={business.is_favourite} businessId={business.id} />
-          <p className="business-row-close">{business.is_closed ? 'Closed' : 'Open'} Now</p>
-          { distance() }
+          <p className="business-row-name">{business.name}</p>
+
+          <p className="business-row-close">   now {business.is_closed ? 'closed' : 'open'} { distance() }</p>
+          
+          <p className="business-row-address">{address && address }</p>
           <TagList tags={business.tags} />
         </div>
       </div>
