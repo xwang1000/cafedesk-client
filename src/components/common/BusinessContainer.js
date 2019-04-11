@@ -2,12 +2,25 @@ import React, { useState, useEffect } from 'react'
 import { getBusinessById } from '../../api/cafedeskAPI'
 import TagList from '../common/TagList'
 import BackButton from '../ui/BackButton'
+import Hours from './Hours'
 import { getAsset } from '../../utils'
 
-const renderBusinessContainer = (props) => {
-  const { image_url, name, distance, is_closed, tags, is_favourite, id } = props.business
-  const distanceInKm = Math.floor(distance / 10) / 100000
+const getDistance = (distance) => {
+  let distance_ = ''
+  if (distance) {
+    distance_ = (distance / 1000).toFixed(2) + 'km'
+    if (distance < 1000) {
+      distance_ = distance.toFixed(0) + ' m'
+    }
+    return <span className="business-row-distance">{ `${distance_}` }</span>
+  }
+  return ''
+}
 
+const renderBusinessContainer = (props) => {
+  const { business } = props
+  const { image_url, name, distance, is_closed, tags, id, url, hours } = business
+  const address = props.business.location.address1
   return (
     <div>
       <div className="business-container">
@@ -18,15 +31,16 @@ const renderBusinessContainer = (props) => {
           </div>
           <div className="business-container-col2">
             <h2>{name}</h2>
-            <p>{is_closed !== undefined ? (is_closed ? 'closed' : 'open') : ''}</p>
-            <p>{distanceInKm ? distanceInKm + ' km away' : ''}</p>
+            <p className="business-container-close">now {is_closed ? 'closed' : 'open'} { getDistance(distance) }</p>
+            <p className="business-container-address">{address && address }</p>
+            <a className="business-container-link" href={url} target="_blank">open in yelp</a>
           </div>
 
         </div>
-
         <div className="business-container-row2">
           <TagList tags={tags} />
         </div>
+        <Hours hours={hours} />
       </div>
     </div>
   )

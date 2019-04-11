@@ -34,7 +34,8 @@
   width: 20px;
   margin: 10px;
   margin-left: 0;
-  opacity: .4;
+  margin-bottom: 2rem;
+  opacity: .3;
 }
 
 .back-button:hover {

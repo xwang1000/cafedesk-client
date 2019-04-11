@@ -1,7 +1,6 @@
 import React from 'react'
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react'
 import { generateRandomId, getAsset } from '../../utils'
-import { Redirect } from 'react-router-dom'
 
 const GOOGLE_API_KEY = 'AIzaSyBitC0nYuPGlErcsECDQl9lvBkEsw_9k1s'
 const STORE_ICON_URL = getAsset('store-icon.svg')
