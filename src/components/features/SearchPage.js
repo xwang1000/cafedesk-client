@@ -28,9 +28,7 @@ const SearchPage = props => {
   const handleInputChange = (event) => {
     setInputValue(event.target.value)
     keywords_ = (event.target.value).split(' ')
-    if (event.target.value !== '') {
-      fireSearch()
-    }
+    fireSearch()
   }
 
   // Reset marker positions to the businesses
@@ -43,9 +41,11 @@ const SearchPage = props => {
     setMarkerPositions([coords])
   }
 
+  const showId = (id) => props.history.push(`/search/${id}`)
+
   return (
     <div>
-      <GoogleApiWrapper markerPositions={markerPositions} />
+      <GoogleApiWrapper markerPositions={markerPositions} showId={showId} />
       <input className="search-bar" type="text" 
         value={inputValue}
         placeholder="look up a coffee shop" 

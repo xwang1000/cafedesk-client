@@ -51,7 +51,10 @@ const fetchBusinessById = async (setState, id, showOnMap) => {
   setState(business)
 
   if (showOnMap) {
-    showOnMap(business.coordinates)
+    showOnMap({
+      id: business.id,
+      coordinates: business.coordinates
+    })
   }
 }
 

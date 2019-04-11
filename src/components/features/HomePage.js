@@ -20,10 +20,11 @@ const HomePage = (props) => {
   }
 
   const user = props.user
+  const showId = (id) => props.history.push(`/feed/${id}`)
 
   return (
     <div className="home-page">
-      <GoogleApiWrapper markerPositions={markerPositions} />
+      <GoogleApiWrapper markerPositions={markerPositions} showId={showId} />
       <PreferenceBox changeUserTags={props.changeUserTags} />
       <Route
         path={props.match.path} 

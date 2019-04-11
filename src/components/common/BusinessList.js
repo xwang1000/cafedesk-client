@@ -7,7 +7,6 @@ import { getBusinesses, getFavouriteBusinessesByUserId, getViewedBusinessesByUse
 const removeDups = businesses => {
   let uniqueIds = []
   let uniqueBusinesses = []
-
   businesses.forEach(business => {
     if (!uniqueIds[business.id]) {
       uniqueIds[business.id] = true
@@ -44,7 +43,11 @@ const fetchBusinesses = async (setState, fetchType, setBusinessMarkers, setMarke
   setState(newState)
 
   if (setBusinessMarkers) {
-    const markers = businesses.map(business => business.coordinates)
+    const markers = businesses.map(business => ({
+      id: business.id,
+      coordinates: business.coordinates
+    }))
+
     setBusinessMarkers(markers)
     setMarkerPositions(markers)
   }
