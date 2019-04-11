@@ -99,12 +99,6 @@
   text-align: right;
 }
 
-.business-row:active {
-  transform: scale(.95);
-  opacity: 1;
-  transition: all .5 ease;
-}
-
 .float-up {
   animation-duration:.6s;
   animation-name: float-up;
