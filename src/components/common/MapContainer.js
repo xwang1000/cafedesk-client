@@ -29,8 +29,7 @@ const Container = props => {
   const style = {
     width: '100%',
     height: '20rem',
-    position: 'relative',
-    boxShadow: '0px 19px 36px -11px rgba(0,0,0,0.1)',
+    position: 'relative'  
   }
 
   const onClick = id => props.showId(id)
