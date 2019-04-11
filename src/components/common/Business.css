@@ -99,6 +99,16 @@
   text-align: right;
 }
 
+.hours {
+  margin-right: 60%;
+}
+
+.hours h2 {
+  margin: .5rem 0;
+  margin-top: 2rem;
+  opacity: .6;
+}
+
 .float-up {
   animation-duration:.6s;
   animation-name: float-up;

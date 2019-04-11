@@ -24,6 +24,7 @@ const Hours = props => {
   
   return (
     <div class="hours">
+      <h2>Hours</h2>
       {dayHours()}
     </div>
   ) 
