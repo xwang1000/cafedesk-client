@@ -70,10 +70,7 @@ const BusinessContainer = (props) => {
   if (business.isLoaded) {
     return renderBusinessContainer({ business })
   }
-
-  else {
-    return renderBusinessContainerLoading()
-  }
+  return renderBusinessContainerLoading()
 }
 
 export default BusinessContainer

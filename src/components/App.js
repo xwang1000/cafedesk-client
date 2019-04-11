@@ -85,7 +85,6 @@ function App() {
               />}
             />
           </div>
-          {/* <Route path='/search/results' component={SearchResultsContainer} /> */}
         </Switch>
         
         <NavBar />

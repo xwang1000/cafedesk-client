@@ -12,10 +12,23 @@ const SearchPage = props => {
 
   let { user } = props
   const [inputValue, setInputValue] = useState('')
+  const [timeoutId, setTimeoutId] = useState(null)
+  let keywords_ = ''
+
+  const fireSearch = () => {
+    clearTimeout(timeoutId)
+
+    const timeoutId_ = setTimeout(() => {
+      setKeywords(keywords_)
+    }, 600)
+
+    setTimeoutId(timeoutId_)
+  }
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value)
-    setKeywords(inputValue.split(' '))
+    keywords_ = (event.target.value).split(' ')
+    fireSearch()
   }
 
   // Reset marker positions to the businesses

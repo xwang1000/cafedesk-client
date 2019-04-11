@@ -62,7 +62,6 @@ module.exports = {
   },
 
   getBusinessByKeyword(keyword) {
-    console.log('api keyword: ', keyword)
     const userCoords = JSON.parse(localStorage.getItem('userCoords'))
 
     return new Promise((res, rej) => {
