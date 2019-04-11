@@ -2,3 +2,30 @@
   transform: scale(2);
   color: black;
 }
+
+.fav-icon {
+  width: 4.5rem;
+  opacity: .8;
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+.fav-icon:hover {
+  cursor: pointer;
+}
+
+.fav-icon--deselect {
+  -webkit-filter: grayscale(90%);
+  filter: grayscale(90%);
+  opacity: .4;
+}
+
+.business-row .fav-icon {
+  position: absolute; 
+  right: 1rem;
+  bottom: 40%;
+}
+
+.business-container .fav-icon {
+  float: right;
+}

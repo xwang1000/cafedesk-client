@@ -26,6 +26,7 @@
   padding: 2rem 2rem;
   border-bottom: .8px solid var(--secondary-color);
   display: flex;
+  position: relative;
 }
 
 .business-row-col2 .tag-list {
@@ -110,6 +111,7 @@
 }
 
 .business-container-col2 {
+  display: relative;
   margin-left: 2rem;
 }
 
@@ -123,10 +125,11 @@
 
 .business-container-pic {
   object-fit: cover;
-  width: 13rem;
-  height: 13rem;
-  border-radius: 10px;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 5px;
   background-color: #eee;
+  opacity: .9;
 }
 
 .loading {

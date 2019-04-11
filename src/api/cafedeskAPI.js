@@ -115,9 +115,10 @@ module.exports = {
     })
   },
 
-  postUserTagsBusiness(userId, tagName, businessId) {
+  postUserBusinessTags(tagName, businessId) {
+    const userId = 1
     cafedeskAPI
-      .post(`/${userId}/tags`, {
+      .post(`/users/${userId}/tags`, null, {
         params: {
           business_id: businessId,
           name: tagName
@@ -130,5 +131,15 @@ module.exports = {
         console.log(error)
       }
       )
+  },
+
+  postUserFavourite(businessId) {
+    const userId = 1
+    cafedeskAPI
+      .post(`users/${userId}/favourites`, null, {
+        params: {
+          business_id: businessId
+        }
+      })
   }
 }

@@ -28,7 +28,9 @@ const SearchPage = props => {
   const handleInputChange = (event) => {
     setInputValue(event.target.value)
     keywords_ = (event.target.value).split(' ')
-    fireSearch()
+    if (event.target.value !== '') {
+      fireSearch()
+    }
   }
 
   // Reset marker positions to the businesses

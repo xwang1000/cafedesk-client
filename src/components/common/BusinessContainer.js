@@ -1,27 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import { getBusinessById } from '../../api/cafedeskAPI'
 import TagList from '../common/TagList'
+import { getAsset } from '../../utils'
 
-const getAsset = (fileName) => `${process.env.PUBLIC_URL}/assets/${fileName}`
-const goBack = () => {
-  window.history.back();
-}
+const goBack = () => window.history.back()
 
 const renderBusinessContainer = (props) => {
-  const { image_url, name, distance, is_closed, tags } = props.business
+  const { image_url, name, distance, is_closed, tags, is_favourite, id } = props.business
   const distanceInKm = Math.floor(distance / 10) / 100000
 
   return (
     <div>
       <div className="business-container">
-        <h1 onClick={goBack}>Go Back</h1>
+        <h1 className="business-container-back" onClick={goBack}>Go Back</h1>
         <div className="business-container-row1">
           <div className="business-container-col1">
             <img className="business-container-pic" src={image_url} alt={name}></img>
           </div>
           <div className="business-container-col2">
             <h2>{name}</h2>
-            <p>{is_closed !== undefined ? (is_closed ? 'Closed Now' : 'Open Now') : ''}</p>
+            <p>{is_closed !== undefined ? (is_closed ? 'closed' : 'open') : ''}</p>
             <p>{distanceInKm ? distanceInKm + ' km away' : ''}</p>
           </div>
 
