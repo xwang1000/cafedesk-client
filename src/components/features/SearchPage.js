@@ -4,6 +4,7 @@ import GoogleApiWrapper from '../common/MapContainer'
 import BusinessList from '../common/BusinessList'
 import BusinessContainer from '../common/BusinessContainer'
 
+const renderWaiting = () => <div><h1>waiting for input</h1></div>
 const SearchPage = props => {
   const [markerPositions, setMarkerPositions] = useState([])
   const [businessMarkers, setBusinessMarkers] = useState([])
@@ -14,7 +15,6 @@ const SearchPage = props => {
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value)
-
     setKeywords(inputValue.split(' '))
   }
 
@@ -32,23 +32,28 @@ const SearchPage = props => {
     <div>
       <GoogleApiWrapper markerPositions={markerPositions} />
       <input className="search-bar" type="text" 
-        value={inputValue} 
+        value={inputValue}
         placeholder="look up a coffee shop" 
         onChange={handleInputChange}
       />
-      <Route
-        path={props.match.path} 
-        render={(props) => (
-          <BusinessList
-            {...props}
-            fetchType="search"
-            keyword={keywords[0]}
-            user={user}
-            setBusinessMarkers={setBusinessMarkers}
-            setMarkerPositions={setMarkerPositions}
-          />
-        )}
-      />
+      {
+        keywords.length >= 1 ?
+        <Route
+          path={props.match.path} 
+          render={(props) => (
+            <BusinessList
+              {...props}
+              fetchType="search"
+              keyword={keywords[0]}
+              user={user}
+              setBusinessMarkers={setBusinessMarkers}
+              setMarkerPositions={setMarkerPositions}
+            />
+          )}
+        /> : 
+        renderWaiting()
+      }
+
       <Route
         exact path={`${props.match.path}/:businessId`}
         render={(props) => 

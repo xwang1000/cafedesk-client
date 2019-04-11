@@ -4,6 +4,16 @@ const cafedeskAPI = axios.create({
   baseURL: 'https://cafedesk-server.herokuapp.com'
 })
 
+const isCafe = business => {
+  for (let i = 0; i < business.categories.length; i++) {
+    const currentCategory = business.categories[i]
+    if (currentCategory.alias === 'cafes' || currentCategory.alias === 'coffee' || currentCategory.alias === 'bubbletea') {
+      return true
+    }
+  }
+  return false
+}
+
 const round = (value, decimals) => {
   return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
@@ -52,11 +62,12 @@ module.exports = {
   },
 
   getBusinessByKeyword(keyword) {
+    console.log('api keyword: ', keyword)
     const userCoords = JSON.parse(localStorage.getItem('userCoords'))
 
     return new Promise((res, rej) => {
       cafedeskAPI
-        .get(`/search/${keyword}`, {
+        .get(`/search`, {
           params: {
             latitude: round(userCoords.latitude, 6),
             longitude: round(userCoords.longitude, 6),
@@ -64,7 +75,8 @@ module.exports = {
           }
         })
         .then(response => {
-          res(response.data)
+          const businesses = response.data.filter(business => isCafe(business))
+          res(businesses)
         })
         .catch(error => {
           rej(error)
@@ -87,11 +99,9 @@ module.exports = {
           }
         })
         .then(response => {
-          console.log(response)
           res(response.data)
         })
         .catch(error => {
-          console.log(error)
           rej(error)
         })
     })
