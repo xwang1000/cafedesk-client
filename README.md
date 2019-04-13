@@ -11,18 +11,7 @@
 CafeDesk is a single page web app designed to look up coffee shops with a work-friendly environment. 
 
 ## Screenshots
-- Feed Page
-![feed page](https://github.com/xwang1000/cafedesk-client/blob/master/public/screenshots/feed.png?raw=true)
-
-- Search Page
-![search page](https://github.com/xwang1000/cafedesk-client/blob/master/public/screenshots/search-page.png?raw=true)
-
-- Favourite Page
-![favourite page](https://github.com/xwang1000/cafedesk-client/blob/master/public/screenshots/favourite.png?raw=true)
-
-- History Page
-![history page](https://github.com/xwang1000/cafedesk-client/blob/master/public/screenshots/history-page.png?raw=true)
-
+![CafeDesk screenshots](https://github.com/xwang1000/cafedesk-client/blob/master/public/screenshots/screenshots.png?raw=true)
 
 ## Demo
 [Watch **Feed feature** demo](https://youtu.be/dKiCQzCqZHA)
