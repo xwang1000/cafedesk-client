@@ -4,7 +4,7 @@
 }
 
 .fav-icon {
-  width: 4.5rem;
+  width: 4rem;
   opacity: .8;
   transform: scale(1.05);
   z-index: 2;
@@ -17,7 +17,7 @@
 .fav-icon--deselect {
   -webkit-filter: grayscale(90%);
   filter: grayscale(90%);
-  opacity: .4;
+  opacity: .3;
 }
 
 .business-row .fav-icon {
