@@ -49,15 +49,15 @@ CafeDesk is a single page web app designed to look up coffee shops with a work-f
 
 ## Tech Stack
 
-- Dotenv
+- React (Hooks, Router) 
+- HTML / pure CSS / JavaScript
+- NodeJS
 - ExpressJS
 - Node.JS
 - Sequelize
 - Axios
-- React
-- React-router
-- CircleCI
 - Jest
+- CircleCI
 - Heroku
 - Netlify
 
