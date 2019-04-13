@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 import './App.css'
 import HomePage from './features/HomePage'
 import SearchPage from './features/SearchPage'
 import FavPage from './features/FavPage'
 import ProfilePage from './features/ProfilePage'
-import SearchResultsContainer from './features/SearchResultsContainer'
+// import SearchResultsContainer from './features/SearchResultsContainer'
+import PreferenceBox from './common/PreferenceBox'
 import NavBar from './features/NavBar'
 
-const fetchUserLocation = async (setUserLocation) => {
+const fetchUserCoords = async (setUserCoords) => {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(setUserLocation)
+    navigator.geolocation.getCurrentPosition(setUserCoords)
   } 
+}
+
+const renderRedirect = (userTags) => {
+  if (userTags.length === 0) {
+    return <Redirect to='/preference' />
+  }
 }
 
 function App() {
@@ -30,44 +37,56 @@ function App() {
     )
   }
 
+  const changeUserTags = tags => {
+    setUserTags(tags)
+    localStorage.setItem('userTags', JSON.stringify(tags))
+  }
+
   useEffect(() => {
-    fetchUserLocation(changeUserCoords)
-    setUserTags(['free wifi', 'jazzy music'])
+    fetchUserCoords(changeUserCoords)
   }, [])
 
   return (
-    <div>
-      
+    <div className="app">
       <BrowserRouter>
         <Switch>
-          <Route exact 
-            path='/feed/:id'
-            render={(props) => <HomePage {...props} 
-            user={{
-              coords: userCoords,
-              tags: userTags
-            }}  />}
-          />
-          <Route path='/feed' 
-            render={(props) => <HomePage {...props} 
-            user={{
-              coords: userCoords,
-              tags: userTags
-            }} />}
-          />
-          <Route path='/search' 
-            render={(props) => <SearchPage {...props} 
-            user={{
-              coords: userCoords,
-              tags: userTags
-            }} />}
-          />
-          <Route path='/fav' component={FavPage} />
-          <Route path='/profile' component={ProfilePage} />
-          {/* <Route path='/search/results' component={SearchResultsContainer} /> */}
+          <div className="pages">
+            <Route exact path="/" render={() => (
+                <Redirect to="/feed"/>
+            )}/>
+            <Route path='/feed' 
+              render={(props) => <HomePage {...props} 
+              user={{
+                coords: userCoords,
+                tags: userTags
+              }}
+              changeUserTags={changeUserTags}
+              />}
+            />
+            <Route path='/search' 
+              render={(props) => <SearchPage {...props} 
+              user={{
+                coords: userCoords,
+                tags: userTags
+              }}
+              />}
+            />
+            <Route path='/fav' 
+              render={(props) => <FavPage {...props} 
+              />}
+            />
+            <Route path='/profile' 
+              render={(props) => <ProfilePage {...props} 
+              user={{
+                coords: userCoords,
+                tags: userTags
+              }}
+              />}
+            />
+          </div>
         </Switch>
         
-      <NavBar />
+        <NavBar />
       </BrowserRouter>
     </div>
   )

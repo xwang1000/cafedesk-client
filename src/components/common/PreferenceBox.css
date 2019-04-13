@@ -1,0 +1,11 @@
+.preference-box {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: .5rem 1rem 3rem 1rem;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+::-webkit-scrollbar {
+  display: none; 
+}

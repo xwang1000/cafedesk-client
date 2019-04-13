@@ -7,7 +7,13 @@
 - Client -  https://github.com/xwang1000/cafedesk-client
 
 ## Overview
-CafeDesk is a webapp designed to provide users with a more focused view of the coffee shops and tea houses in Vancouver with the aim to make finding an area to study/work in as easy as possible!
+
+CafeDesk is a single page web app designed to look up coffee shops with a work-friendly environment. 
+
+## Demo
+[Watch **Feed feature** demo](https://youtu.be/dKiCQzCqZHA)
+
+[Watch **Search feature** demo](https://youtu.be/8CFSHzCrCSI)
 
 ## Getting Started (User)
 - Hop onto our website at https://cafedesk.netlify.com
@@ -39,6 +45,7 @@ CafeDesk is a webapp designed to provide users with a more focused view of the c
 - CircleCI
 - Jest
 - Heroku
+- Netlify
 
 ## Known Issues
 - Let us know if you identify any!
