@@ -61,5 +61,9 @@ CafeDesk is a single page web app designed to look up coffee shops with a work-f
 - Heroku
 - Netlify
 
+### API
+- Yelp API
+- Google Maps API
+
 ## Known Issues
 - Let us know if you identify any!
