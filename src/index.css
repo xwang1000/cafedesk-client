@@ -1,17 +1,11 @@
 html {
-  font-size: 85%;
+  font-size: 55%;
   height: 100%;
-  padding: 0 100px;
 }
 
 body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }
 
 a {
