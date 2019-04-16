@@ -23,7 +23,7 @@ const HomePage = (props) => {
   const showId = (id) => props.history.push(`/feed/${id}`)
 
   return (
-    <div className="home-page">
+    <div className="page home-page">
       <GoogleApiWrapper markerPositions={markerPositions} showId={showId} />
       <PreferenceBox changeUserTags={props.changeUserTags} />
       <Route

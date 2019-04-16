@@ -4,11 +4,12 @@ import GoogleApiWrapper from '../common/MapContainer'
 import BusinessList from '../common/BusinessList'
 import BusinessContainer from '../common/BusinessContainer'
 import { getAsset } from '../../utils'
+
 const renderWaiting = () => {
   return (
-    <div className="search-page-waiting">
-      <img className="search-page-waiting-location" src={getAsset('store-icon.svg')} />
-      <img className="search-page-waiting-scan" src={getAsset('scan.svg')} />
+    <div className="page search-page search-page-waiting">
+      <img className="search-page-waiting-location" src={getAsset('store-icon.svg')} alt="search page icon" />
+      <img className="search-page-waiting-scan" src={getAsset('scan.svg')} alt="search page icon"/>
     </div>
   )
 }
@@ -28,7 +29,7 @@ const SearchPage = props => {
 
     const timeoutId_ = setTimeout(() => {
       setKeywords(keywords_)
-    }, 600)
+    }, 800)
 
     setTimeoutId(timeoutId_)
   }
@@ -52,7 +53,7 @@ const SearchPage = props => {
   const showId = (id) => props.history.push(`/search/${id}`)
 
   return (
-    <div>
+    <div className="page search-page">
       <GoogleApiWrapper markerPositions={markerPositions} showId={showId} />
       <input className="search-bar" type="text" 
         value={inputValue}

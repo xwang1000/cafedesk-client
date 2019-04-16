@@ -6,7 +6,7 @@ import BusinessContainer from '../common/BusinessContainer'
 const FavPage = props => {
 
   return (
-    <div className="fav-page">
+    <div className="fav-page page">
       <h1>My Favourites </h1>
       <Route
         exact path={props.match.path} 

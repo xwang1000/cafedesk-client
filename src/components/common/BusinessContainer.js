@@ -19,7 +19,7 @@ const getDistance = (distance) => {
 
 const renderBusinessContainer = (props) => {
   const { business } = props
-  const { image_url, name, distance, is_closed, tags, id, url, hours } = business
+  const { image_url, name, distance, is_closed, tags, url, hours } = business
   const address = props.business.location.address1
   return (
     <div>
@@ -33,7 +33,7 @@ const renderBusinessContainer = (props) => {
             <h2>{name}</h2>
             <p className="business-container-close">now {is_closed ? 'closed' : 'open'} { getDistance(distance) }</p>
             <p className="business-container-address">{address && address }</p>
-            <a className="business-container-link" href={url} target="_blank">open in yelp</a>
+            <a className="business-container-link" href={url} rel="noopener noreferrer" target="_blank">open in yelp</a>
           </div>
 
         </div>

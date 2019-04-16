@@ -19,7 +19,7 @@ const FavIcon = props => {
 
   const className = favourite ? 'fav-icon' : 'fav-icon fav-icon--deselect'
 
-  return <img className={className} onClick={onClick} src={FAVOURITE_URL} />
+  return <img className={className} onClick={onClick} src={FAVOURITE_URL} alt="star icon" />
 }
 
 export default FavIcon

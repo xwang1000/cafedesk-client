@@ -46,3 +46,15 @@
   transform: scale(.9);
   opacity: .5;
 }
+
+.schedule-day {
+  margin: .5rem auto;
+  font-size: 1.5rem;
+  opacity: .5;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hours {
+  margin-right: 60%;
+}

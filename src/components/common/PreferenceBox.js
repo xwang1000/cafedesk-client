@@ -3,22 +3,28 @@ import { InteractiveTag } from './Tag'
 import './PreferenceBox.css'
 import { getTags } from '../../api/cafedeskAPI'
 
-const allTagsData = []
-getTags()
-  .then(tags => {
-    tags.forEach((tag, i) => {
-      allTagsData.push({ name: tag, selected: i < 3 ? true : false })
+const tags = []
+const fetchTags = async (setAllTags, changeUserTags) => {
+  
+  try {
+    const fetchedTags = await getTags()
+
+    fetchedTags.forEach((tag, i) => {
+      tags.push({name: tag, selected: i < 3 ? true : false})
     })
-  })
-  .catch(error => {
-    console.error(error);
-  })
+  } catch (error) {
+
+  }
+
+  setAllTags(tags)
+  changeUserTags(tags)
+}
 
 const PreferenceBox = props => {
   const [allTags, setAllTags] = useState([])
 
   useEffect(() => {
-    setAllTags(allTagsData)
+    fetchTags(setAllTags, props.changeUserTags)
   }, {})
 
   const updateTags = () => {

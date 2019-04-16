@@ -2,8 +2,7 @@ import React from 'react'
 import { days, generateRandomId } from '../../utils'
 
 const insert = (word) => {
-  const txt2 = word.slice(0, 2) + ":" + word.slice(2);
-  return txt2
+  return word.slice(0, 2) + ":" + word.slice(2);
 }
 
 const renderDay = (openHour) => {
@@ -11,7 +10,12 @@ const renderDay = (openHour) => {
   const startTime = insert(openHour.start)
   const endTime = insert(openHour.end)
 
-  return `${weekDay}  ${startTime} - ${endTime}`
+  return (
+    <p className="schedule-day" >
+      <span className="schedule-day--weekday">{weekDay}</span>
+      <span className="schedule-day--hours">{startTime} - {endTime} </span>
+    </p>
+  )
 }
 
 const Hours = props => {
@@ -19,11 +23,11 @@ const Hours = props => {
   const openHours = hours[0].open
   
   const dayHours = () => {
-    return openHours.map(openHour => <p className="schedule-day" key={generateRandomId()} >{renderDay(openHour)}</p>)
+    return openHours.map(openHour => <div key={generateRandomId()} >{renderDay(openHour)}</div>)
   }
   
   return (
-    <div class="hours">
+    <div className="hours">
       <h2>Hours</h2>
       {dayHours()}
     </div>

@@ -20,22 +20,27 @@ const fetchBusinesses = async (setState, fetchType, setBusinessMarkers, setMarke
   setState({ loaded: false })
 
   let businesses = []
-  if (fetchType === 'recommendations') {
-    businesses = await getBusinesses(tags)
-  }
 
-  if (fetchType === 'favourite') {
-    businesses = await getFavouriteBusinessesByUserId(1)
-  }
+  try {
+    if (fetchType === 'recommendations' && tags.length > 0) {
+      businesses = await getBusinesses(tags)
+    }
+  
+    if (fetchType === 'favourite') {
+      businesses = await getFavouriteBusinessesByUserId(1)
+    }
+  
+    if (fetchType === 'history') {
+      businesses = await getViewedBusinessesByUserId(1)
+    }
+  
+    if (fetchType === 'search') {
+      businesses = await getBusinessByKeyword(keyword)
+    }
+  } catch (error) {
 
-  if (fetchType === 'history') {
-    businesses = await getViewedBusinessesByUserId(1)
   }
-
-  if (fetchType === 'search') {
-    businesses = await getBusinessByKeyword(keyword)
-  }
-
+  
   const newState = {
     loaded: true,
     businesses: removeDups(businesses)
@@ -73,8 +78,10 @@ const BusinessList = (props) => {
   }, [])
 
   useEffect(() => {
-    if (props.user && prevUserTags !== props.user.tags || props.keyword !== prevKeyword) {
-      fetchBusinesses(setState, fetchType, props.setBusinessMarkers, props.setMarkerPositions, props.user.tags, props.keyword)
+    if (props.user) {
+      if (prevUserTags !== props.user.tags || props.keyword !== prevKeyword) {
+        fetchBusinesses(setState, fetchType, props.setBusinessMarkers, props.setMarkerPositions, props.user.tags, props.keyword)
+      }
     }
   })
 

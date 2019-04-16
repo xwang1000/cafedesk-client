@@ -6,7 +6,7 @@ import { Route } from 'react-router-dom'
 const ProfilePage = (props) => {
   
   return (
-      <div className="profile-history">
+      <div className="page profile-history">
         <h1 className="profile-history-head">History</h1>
         <Route
           path={props.match.path} 

@@ -14,7 +14,7 @@ h1 {
   height: 100vh;
 }
 
-.pages {
+.page {
   height: 92vh;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
@@ -97,8 +97,8 @@ h1 {
   padding-bottom: 0;
 }
 
-.home-page {
-  height: 100%;
+.page {
+  height: 92vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;

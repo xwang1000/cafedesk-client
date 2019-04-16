@@ -74,12 +74,6 @@ const Container = props => {
 
   bounds.extend(points[0])
 
-  const defaultMapOptions = {
-    fullscreenControl: false,
-    disableDefaultUI: true,
-    streetViewControl: false
-  };
-
   return (
     <div style={style} >
       <Map 
@@ -98,7 +92,6 @@ const Container = props => {
     </div>
   )
 }
-
 
 export default GoogleApiWrapper({
   apiKey: GOOGLE_API_KEY,
