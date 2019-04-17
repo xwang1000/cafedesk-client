@@ -22,7 +22,6 @@ const renderBusinessContainer = (props) => {
   const { image_url, name, distance, is_closed, tags, url, hours } = business
   const address = props.business.location.address1
   return (
-    <div>
       <div className="business-container">
         <BackButton />
         <div className="business-container-row1">
@@ -42,7 +41,6 @@ const renderBusinessContainer = (props) => {
         </div>
         <Hours hours={hours} />
       </div>
-    </div>
   )
 }
 
