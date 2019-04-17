@@ -1,15 +1,6 @@
 const getDay  = dayOfTheWeek => {
-  const weekday = new Array(7);
-  weekday[1]="Mon";
-  weekday[2]="Tue";
-  weekday[3]="Wed";
-  weekday[4]="Thu";
-  weekday[5]="Fri";
-  weekday[6]="Sat";
-  weekday[0]="Sun";
-
-  const n = weekday[dayOfTheWeek % 7];
-  return n;
+  const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat']
+  return weekdays[dayOfTheWeek % 7]
 }
 
 module.exports = {
@@ -35,8 +26,20 @@ module.exports = {
     return day % 7 - 1
   },
 
+  toClassNames (classNames) {
+    return Object.keys(classNames).reduce((classNamesList, currentName) => {
+      if (classNames[currentName]) {
+        const newClassNamesList = classNamesList
+        newClassNamesList.push(currentName)
+        return newClassNamesList
+      } else {
+        return classNamesList
+      }
+    }, []).join(' ')
+  },
+
   convertToHours (word) {
-    return word.slice(0, 2) + ":" + word.slice(2);
+    return word.slice(0, 2) + ":" + word.slice(2)
   }
   
 }

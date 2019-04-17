@@ -1,5 +1,5 @@
 import React from 'react' 
-import { getYelpDay, generateRandomId, convertToYelpDay, convertToHours } from '../../utils'
+import { getYelpDay, generateRandomId, convertToYelpDay, convertToHours, toClassNames } from '../../utils'
 const todayDay = new Date().getDay()
 
 const renderDay = (openHour) => {
@@ -8,12 +8,13 @@ const renderDay = (openHour) => {
   const startTime = convertToHours(openHour.start)
   const endTime = convertToHours(openHour.end)
   
-  // If it is today, add class
-  const today = convertToYelpDay(todayDay) === openHour.day
-  const className = today ? 'schedule-day--today' : ''
+  const className = toClassNames ({
+    'schedule-day': true,
+    'schedule-day--today': convertToYelpDay(todayDay) === openHour.day
+  })
 
   return (
-    <p className={"schedule-day " + className} >
+    <p className={className} >
       <span className="schedule-day--weekday">{weekDay}</span>
       <span className="schedule-day--hours">{startTime} - {endTime} </span>
     </p>
