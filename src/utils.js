@@ -1,3 +1,17 @@
+const getDay  = dayOfTheWeek => {
+  const weekday = new Array(7);
+  weekday[1]="Mon";
+  weekday[2]="Tue";
+  weekday[3]="Wed";
+  weekday[4]="Thu";
+  weekday[5]="Fri";
+  weekday[6]="Sat";
+  weekday[0]="Sun";
+
+  const n = weekday[dayOfTheWeek % 7];
+  return n;
+}
+
 module.exports = {
   getAsset (fileName) {
     return `${process.env.PUBLIC_URL}/assets/${fileName}`
@@ -13,17 +27,16 @@ module.exports = {
     return text;
   },
 
-  days (dayOfTheWeek) {
-    const weekday = new Array(7);
-    weekday[0]="Mon";
-    weekday[1]="Tue";
-    weekday[2]="Wed";
-    weekday[3]="Thu";
-    weekday[4]="Fri";
-    weekday[5]="Sat";
-    weekday[6]="Sun";
-  
-    const n = weekday[dayOfTheWeek];
-    return n;
+  getYelpDay (dayOfTheWeek) {
+    return getDay(dayOfTheWeek % 7 + 8)
+  },
+
+  convertToYelpDay (day) {
+    return day % 7 - 1
+  },
+
+  convertToHours (word) {
+    return word.slice(0, 2) + ":" + word.slice(2);
   }
+  
 }

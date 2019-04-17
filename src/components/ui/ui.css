@@ -55,6 +55,10 @@
   justify-content: space-between;
 }
 
+.schedule-day--today {
+  font-weight: 700;
+}
+
 .hours {
   margin-right: 60%;
 }

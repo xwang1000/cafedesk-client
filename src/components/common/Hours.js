@@ -1,17 +1,19 @@
 import React from 'react' 
-import { days, generateRandomId } from '../../utils'
-
-const insert = (word) => {
-  return word.slice(0, 2) + ":" + word.slice(2);
-}
+import { getYelpDay, generateRandomId, convertToYelpDay, convertToHours } from '../../utils'
+const todayDay = new Date().getDay()
 
 const renderDay = (openHour) => {
-  const weekDay = days(openHour.day)
-  const startTime = insert(openHour.start)
-  const endTime = insert(openHour.end)
+  // Gather information
+  const weekDay = getYelpDay(openHour.day)
+  const startTime = convertToHours(openHour.start)
+  const endTime = convertToHours(openHour.end)
+  
+  // If it is today, add class
+  const today = convertToYelpDay(todayDay) === openHour.day
+  const className = today ? 'schedule-day--today' : ''
 
   return (
-    <p className="schedule-day" >
+    <p className={"schedule-day " + className} >
       <span className="schedule-day--weekday">{weekDay}</span>
       <span className="schedule-day--hours">{startTime} - {endTime} </span>
     </p>
