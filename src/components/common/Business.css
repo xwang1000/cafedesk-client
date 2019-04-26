@@ -233,14 +233,20 @@
   margin: .4rem;
   margin-left: 0;
   display: inline-block;
+  box-sizing: border-box;
+  transition: .5s all;
 }
 
 .tag-interactive:hover .tag {
   cursor: pointer;
 }
 
+.tag-interactive:active .tag {
+  transform: scale(.98);
+}
+
 .tag-interactive:not(.tag-interactive--selected) .tag {
-  background-color: var(--deselect-color)
+  background-color: var(--deselect-color);
 }
 
 .business-container-row2 {

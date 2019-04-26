@@ -1,11 +1,66 @@
 .preference-box {
   overflow-x: scroll;
   overflow-y: hidden;
-  padding: .5rem 1rem 3rem 1rem;
+  padding: .5rem 1rem 1rem 1rem;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+.preference-box .tag-interactive {
+  position: relative;
+  right: 0;
+  -webkit-animation: nudge 2s forwards;
+  -webkit-animation-delay: 1.5s;
+  animation: nudge 2s forwards;
+  animation-delay: 1.5s;
+
 }
 
 ::-webkit-scrollbar {
   display: none; 
+}
+
+@-webkit-keyframes nudge {
+  20% {
+    right: 20px;
+  }
+
+  50% {
+    right: 0;
+  }
+
+  70% {
+    right: 80px;
+  }
+
+  80% {
+    right: 80px;
+  }
+
+  100% { 
+    right: 0px; 
+  }
+}
+
+@keyframes nudge {
+  20% {
+    right: 20px;
+  }
+
+  50% {
+    right: 0;
+  }
+
+  70% {
+    right: 80px;
+  }
+
+  80% {
+    right: 80px;
+  }
+
+  100% { 
+    right: 0px; 
+  }
 }
