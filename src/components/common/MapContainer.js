@@ -16,10 +16,10 @@ const hasPosition = business => {
 const LoadingContainer = () => (<div className="map-loading"></div>)
 
 const Container = props => {
-  const getFormattedCoordinates = coordinates => {
+  const getFormattedCoordinates = coordinates => {  
     return {
-      lat: coordinates.latitude,
-      lng: coordinates.longitude
+      lat: coordinates ? coordinates.latitude : 23,
+      lng: coordinates ? coordinates.longitude : 49
     } 
   }
 
