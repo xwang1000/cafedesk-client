@@ -8,6 +8,7 @@ import SearchPage from './features/SearchPage'
 import FavPage from './features/FavPage'
 import ProfilePage from './features/ProfilePage'
 import NavBar from './features/NavBar'
+import Demo from './features/Demo'
 import { isEmptyObject } from '../utils'
 
 const fetchUserCoords = async (setUserCoords) => {
@@ -82,7 +83,7 @@ function App() {
             />
           </Switch>
         }
-        
+        <Demo />
         <NavBar />
       </BrowserRouter>
     </div>

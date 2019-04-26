@@ -1,5 +1,6 @@
 body {
   --main-color: rgba(219, 122, 83, .8);
+  --main-color-solid: rgb(219, 122, 83);
   --secondary-color: #eee;
   --deselect-color: lightgrey;
 }

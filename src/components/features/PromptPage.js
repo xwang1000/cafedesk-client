@@ -9,7 +9,7 @@ const PromptPage = () => {
       <img className="prompt-page__image" alt="Coffee brain" src={getAsset('coffee-mind.svg')} />
       <h2>Allow <span>CafeDesk</span> to know your location</h2>
       <p>so that we can help you find better coffee shops!</p>
-
+      
       <div className="prompt-page__instruction">
         <h3>Most mobile devices: </h3>
         <p>Enable it at Settings > Privacy > Location Services.</p>

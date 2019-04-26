@@ -1,0 +1,60 @@
+.demo {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  text-align: right;
+}
+
+.demo__header:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+  transition: .4s transform ease;
+}
+
+.demo__header:active {
+  transform: translateY(2px);
+  transition: .2s transform ease;
+}
+
+.demo__header h1 {
+  font-size: 1.6rem;
+  color: white;
+  opacity: 1;
+  margin-top: 18px;
+  font-weight: 300;
+}
+
+.demo__header {
+  display: inline-block;
+  border-radius: 60%;
+  background-color: var(--main-color);
+  width: 60px;
+  height: 60px;
+  text-align: center;
+}
+
+.demo__body {
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: var(--main-color-solid);
+  width: 80vw;
+  transition: 1s all ease;
+  text-align: left;
+  padding: 20px;
+  color: white;
+  opacity: 1;
+}
+
+.demo__body h1 {
+  opacity: 1;
+}
+
+.demo__body p {
+  font-size: 1.5rem;
+  color: white;
+  opacity: .8;  
+}
+
+.demo__body a {
+  text-decoration: underline;
+}
