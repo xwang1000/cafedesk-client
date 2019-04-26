@@ -6,7 +6,8 @@ import './Business.css'
 const BusinessRow = props => {
   const { business } = props
   const address = business.location.address1
-  
+  const is_open = business.hours ? business.hours[0].is_open_now : undefined
+
   const getDistance = (distance) => {
     let distance_ = ''
     if (distance) {
@@ -30,7 +31,7 @@ const BusinessRow = props => {
           <FavIcon isFav={business.is_favourite} businessId={business.id} />
           <p className="business-row-name">{business.name}</p>
 
-          <p className="business-row-close">now {business.is_closed ? 'closed' : 'open'} { getDistance(business.distance) }</p>
+          <p className="business-row-close">now {is_open ? 'open' : 'closed'} { getDistance(business.distance) }</p>
           
           <p className="business-row-address">{address && address }</p>
           <TagList tags={business.tags} />
