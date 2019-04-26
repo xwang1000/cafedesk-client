@@ -1,0 +1,46 @@
+.prompt-page {
+  text-align: center;
+  overflow-y: scroll;
+}
+
+.prompt-page h2 {
+  font-size: 1.9rem;
+  color: var(--main-color);
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+
+.prompt-page h3 {
+  margin: 0;
+  padding: 1rem 0 .3rem 0;
+}
+
+.prompt-page span {
+  font-weight: 700;
+}
+
+.prompt-page p {
+  font-size: 1.5rem;
+  color: grey;
+  margin: 0;
+  padding: 0;
+}
+
+.prompt-page__image {
+  margin: 40px auto;
+  width: 140px;
+  height: auto;
+}
+
+.prompt-page__instruction {
+  display: inline-block;
+  margin: auto;
+  text-align: left;
+  padding: 10px 50px;
+  opacity: .7;
+}
+
+.prompt-page__instruction h3 {
+  opacity: .5;
+}

@@ -40,6 +40,10 @@ module.exports = {
 
   convertToHours (word) {
     return word.slice(0, 2) + ":" + word.slice(2)
+  },
+
+  isEmptyObject (obj) {
+    return Object.keys(obj).length === 0 && obj.constructor === Object
   }
   
 }
