@@ -18,7 +18,6 @@ const LoadingContainer = () => (<div className="map-loading"></div>)
 const Container = props => {
 
   const getFormattedCoordinates = coordinates => {  
-    console.log(coordinates)
     return {
       lat: coordinates ? coordinates.latitude : 23,
       lng: coordinates ? coordinates.longitude : 49

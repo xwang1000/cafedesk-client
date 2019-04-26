@@ -29,6 +29,7 @@
 
 .prompt-page__image {
   margin: 40px auto;
+  margin-bottom: 20px;
   width: 140px;
   height: auto;
 }
@@ -37,7 +38,8 @@
   display: inline-block;
   margin: auto;
   text-align: left;
-  padding: 10px 50px;
+  padding: 10px 30px;
+  padding-top: 0;
   opacity: .7;
 }
 
