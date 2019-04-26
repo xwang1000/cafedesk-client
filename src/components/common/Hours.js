@@ -23,18 +23,29 @@ const renderDay = (openHour) => {
 
 const Hours = props => {
   const { hours } = props
-  const openHours = hours[0].open
+
+  if (hours !== undefined) {
+    const openHours = hours[0].open
   
-  const dayHours = () => {
-    return openHours.map(openHour => <div key={generateRandomId()} >{renderDay(openHour)}</div>)
+    const dayHours = () => {
+      return openHours.map(openHour => <div key={generateRandomId()} >{renderDay(openHour)}</div>)
+    }
+
+    return (
+      <div className="hours">
+        <h2>Hours</h2>
+        {dayHours()}
+      </div>
+    ) 
   }
-  
+
   return (
     <div className="hours">
       <h2>Hours</h2>
-      {dayHours()}
+      <p className="schedule-day">not available</p>
     </div>
-  ) 
+  )
+
 }
 
 export default Hours
