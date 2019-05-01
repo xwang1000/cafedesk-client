@@ -115,7 +115,7 @@
 }
 
 .float-up {
-  animation-duration:.6s;
+  animation-duration:.4s;
   animation-name: float-up;
   animation-iteration-count: 1;
   animation-timing-function: ease-out;
@@ -124,7 +124,7 @@
 
 @keyframes float-up {
   0% {
-    top: 500px;
+    top: 250px;
   }
 
   100% {
@@ -175,7 +175,7 @@
   opacity: .8;
   object-fit: cover;
   width: 11rem;
-  height: 95%;
+  height: 11rem;
   border-radius: 3px;
 }
 
