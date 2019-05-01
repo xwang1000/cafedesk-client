@@ -1,0 +1,17 @@
+.gallery {
+  margin-bottom: 3rem;
+  vertical-align: top;
+  text-align: center;
+  display: flex;
+  overflow-y: scroll;
+  width: 100%;
+  background-color: #eee;
+}
+
+.gallery img {
+  width: 200px;
+  height: 200px;
+  margin-right: 3px;
+  object-fit: cover;
+  opacity: .8;
+}

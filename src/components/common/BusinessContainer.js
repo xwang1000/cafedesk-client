@@ -3,6 +3,7 @@ import { getBusinessById } from '../../api/cafedeskAPI'
 import TagList from '../common/TagList'
 import BackButton from '../ui/BackButton'
 import Hours from './Hours'
+import Gallery from '../features/Gallery'
 import { getAsset } from '../../utils'
 
 const getDistance = (distance) => {
@@ -19,29 +20,45 @@ const getDistance = (distance) => {
 
 const renderBusinessContainer = (props) => {
   const { business } = props
-  const { image_url, name, distance, tags, url, hours } = business
+  const { image_url, name, distance, tags, url, hours, photos } = business
   const is_open = hours ? hours[0].is_open_now : undefined
 
   const address = props.business.location.address1
   return (
       <div className="business-container">
         <BackButton />
-        <div className="business-container-row1">
-          <div className="business-container-col1">
-            <img className="business-container-pic" src={image_url} alt={name}></img>
-          </div>
-          <div className="business-container-col2">
-            <h2>{name}</h2>
-            <p className="business-container-close">now {is_open ? 'open' : 'closed'} { getDistance(distance) }</p>
-            <p className="business-container-address">{address && address }</p>
-            <a className="business-container-link" href={url} rel="noopener noreferrer" target="_blank">open in yelp</a>
-          </div>
+        <Gallery photos={photos} name={name} />
 
+        <div className="business-container__body">
+            <div className="business-container-row1">
+              <h2>
+                {name}
+                <a className="business-container__yelp" 
+                   href={url} 
+                   rel="noopener noreferrer" 
+                   target="_blank"
+                >
+                  yelp
+                </a>
+              </h2>
+              <p>
+                <span className="business-container-close">
+                  <i class="far fa-clock"></i>
+                  now {is_open ? 'open' : 'closed'} { getDistance(distance) }
+                </span>
+                <span className="business-container-address">
+                  <i class="fas fa-map-marker-alt"></i>
+                  {address && address }
+                </span>
+              </p>
+          </div>
+          <div className="business-container-row2">
+            <TagList tags={tags} />
+          </div>
+          <Hours hours={hours} />
         </div>
-        <div className="business-container-row2">
-          <TagList tags={tags} />
-        </div>
-        <Hours hours={hours} />
+        
+        
       </div>
   )
 }
@@ -62,7 +79,6 @@ const fetchBusinessById = async (setState, id, showOnMap) => {
   business.isLoaded = true
 
   setState(business)
-
   if (showOnMap) {
     showOnMap({
       id: business.id,
@@ -71,7 +87,7 @@ const fetchBusinessById = async (setState, id, showOnMap) => {
   }
 }
 
-const BusinessContainer = (props) => {
+const BusinessContainer = props => {
   const [business, setBusiness] = useState({ isLoaded: false })
   useEffect(() => {
     fetchBusinessById(setBusiness, props.match.params.businessId, props.showOnMap)

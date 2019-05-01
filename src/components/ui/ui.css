@@ -30,21 +30,22 @@
   float: right;
 }
 
-.back-button {
-  width: 20px;
-  margin: 10px;
-  margin-left: 0;
-  margin-bottom: 2rem;
-  opacity: .3;
-}
-
-.back-button:hover {
+.back-button .fav-icon:hover {
   cursor: pointer;
 }
 
 .back-button:active {
   transform: scale(.9);
   opacity: .5;
+}
+
+.fa-chevron-down {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 5;
+  color: white;
+  font-size: 3rem;
 }
 
 .schedule-day {

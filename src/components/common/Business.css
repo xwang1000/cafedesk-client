@@ -38,9 +38,22 @@
   background-color: #eee;
 }
 
-.business-row-col2 .tag-list {
+.business-container-row1 i {
+  padding-right: .4rem;
+}
+
+.business-container-row1 .tag-list {
   width: 100%;
   height: 3.5rem;
+  overflow: hidden;
+}
+
+.business-row-col2 {
+  margin-left: 2rem;
+}
+
+.business-row-col2 .tag-list {
+  height: 3.7rem;
   overflow: hidden;
 }
 
@@ -50,10 +63,6 @@
   height: 11rem;
   border-radius: 3px;
   opacity: .8;
-}
-
-.business-row-col2 {
-  margin-left: 2rem;
 }
 
 .business-row-name {
@@ -90,14 +99,20 @@
   position: absolute;
   top: 200px;
   background-color: white;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  width: 100vw;
   height: 90vh;
   z-index: 2;
-  padding: 2rem;
   box-sizing: border-box;
   box-shadow: 0px 19px 36px 11px rgba(0,0,0,.3);
+  overflow: hidden;
+  overflow-y: scroll;
+  padding-bottom: 20rem;
+}
+
+.business-container__body {
+  padding: 0 30px;
 }
 
 .hours {
@@ -134,49 +149,41 @@
 }
 
 .business-container-row1 {
-  display: flex;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
 }
 
-.business-container-col2 {
-  display: relative;
-  margin-left: 2rem;
-}
-
-.business-container-col2 h2 {
+.business-container-row1 h2 {
   font-size: 1.8rem;
-  opacity: .6;
+  font-weight: 300;
+  opacity: .8;
   margin: 0;
   margin-bottom: 1rem;
 }
 
-.business-container-col2 p {
+.business-container-row1 span {
   font-size: 1.4rem;
   margin: .2rem;
   margin-left: 0;
   opacity: .4;
 }
 
-.business-container-col2 a {
-  color: var(--main-color);
+.business-container__yelp {
+  color: grey;
   font-size: 1.5rem;
   opacity: .8;
   margin-top: 1rem;
-  text-decoration: underline;
+  margin-left: 3rem;
+  background-color: #eee;
+  padding: 5px 6px;
+  border-radius: 5px;
 }
 
 .business-container-close {
   opacity: .4;
   font-size: 1.5rem;
-}
-
-.business-container-pic {
-  border-radius: 5px;
-  background-color: #eee;
-  opacity: .8;
-  object-fit: cover;
-  width: 11rem;
-  height: 11rem;
-  border-radius: 3px;
+  color: black;
+  padding-right: 1rem;
 }
 
 .loading {
