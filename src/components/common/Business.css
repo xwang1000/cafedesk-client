@@ -226,7 +226,13 @@
   margin-left: 0;
   display: inline-block;
   box-sizing: border-box;
-  transition: .5s all;
+  transition: .2s all;
+}
+
+.tag-interactive .tag {
+  border: .5px solid var(--main-color);
+  background-color: var(--main-color-transparent);
+  color: var(--main-color);
 }
 
 .tag-interactive:hover .tag {
@@ -239,6 +245,8 @@
 
 .tag-interactive:not(.tag-interactive--selected) .tag {
   background-color: var(--deselect-color);
+  border: none;
+  color: white;
 }
 
 .business-container-row2 {
