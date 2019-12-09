@@ -20,7 +20,7 @@ const getDistance = (distance) => {
 
 const renderBusinessContainer = (props) => {
   const { business } = props
-  const { image_url, name, distance, tags, url, hours, photos } = business
+  const { name, distance, tags, url, hours, photos } = business
   const is_open = hours ? hours[0].is_open_now : undefined
 
   const address = props.business.location.address1
@@ -43,11 +43,11 @@ const renderBusinessContainer = (props) => {
               </h2>
               <p>
                 <span className="business-container-close">
-                  <i class="far fa-clock"></i>
+                  <i className="far fa-clock"></i>
                   now {is_open ? 'open' : 'closed'} { getDistance(distance) }
                 </span>
                 <span className="business-container-address">
-                  <i class="fas fa-map-marker-alt"></i>
+                  <i className="fas fa-map-marker-alt"></i>
                   {address && address }
                 </span>
               </p>

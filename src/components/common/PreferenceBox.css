@@ -1,6 +1,7 @@
 .preference-box {
   overflow-x: scroll;
   overflow-y: hidden;
+  height: 70px;
   padding: .5rem 1rem 1.8rem 1rem;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
